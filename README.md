@@ -2,11 +2,21 @@
 
 Findings and strategic summaries from the Microsoft AI Tour in Zürich (April 2026).
 
-## Key Resource
+## 🌐 Interactive Executive Portal
 
-For a detailed, persona-based executive summary of the conference, including the Microsoft IQ Stack, Agent Factory, and Security deep-dives, please see:
+Explore the interactive, persona-based executive summary here:
 
-👉 **[MS AI Tour Zürich 2026: Executive Summary](./MS_AI_TOUR_ZURICH_2026.md)**
+👉 **[Microsoft AI Tour Zürich 2026 - Executive Portal](https://microsoft.github.io/msft_AI_tour/index.html)** *(Assuming GitHub Pages is enabled)*
+
+Or view the source file directly: [index.html](./index.html)
+
+---
+
+## 📄 Detailed Documentation
+
+For a comprehensive Markdown-based summary, including the Microsoft IQ Stack, Agent Factory, and Security deep-dives, see:
+
+👉 **[MS AI Tour Zürich 2026: Executive Summary (Markdown Version)](./MS_AI_TOUR_ZURICH_2026.md)**
 
 ## Overview of Topics Covered
 

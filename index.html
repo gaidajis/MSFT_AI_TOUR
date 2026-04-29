@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microsoft AI Tour Zürich 2026 | Executive Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .tab-active { border-bottom: 2px solid #3b82f6; color: #3b82f6; }
+        .glass { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); }
+        .card-hover:hover { transform: translateY(-4px); transition: all 0.3s ease; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 leading-relaxed">
+
+    <!-- Header -->
+    <header class="sticky top-0 z-50 glass border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 bg-blue-600 rounded flex items-center justify-center text-white">
+                        <i class="fas fa-microchip text-sm"></i>
+                    </div>
+                    <span class="font-bold text-xl tracking-tight uppercase">AI Tour Zürich '26</span>
+                </div>
+                <div class="relative w-64">
+                    <input type="text" id="searchInput" placeholder="Search insights..."
+                        class="w-full bg-gray-100 border-none rounded-full py-2 pl-10 pr-4 text-sm focus:ring-2 focus:ring-blue-500">
+                    <div class="absolute left-3 top-2.5 text-gray-400">
+                        <i class="fas fa-search"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="bg-gradient-to-r from-blue-900 to-indigo-900 py-16 text-white text-center px-4">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-4">Becoming a Frontier Firm</h1>
+            <p class="text-lg text-blue-100 opacity-90 max-w-2xl mx-auto">
+                Strategic insights from Microsoft AI Tour Zürich. Move from AI experimentation to enterprise execution with the Agentic Ecosystem.
+            </p>
+        </div>
+    </section>
+
+    <!-- Persona Selector -->
+    <nav class="bg-white border-b border-gray-200 sticky top-16 z-40 overflow-x-auto whitespace-nowrap scrollbar-hide">
+        <div class="max-w-7xl mx-auto px-4 flex space-x-8">
+            <button onclick="filterBy('all', event)" class="persona-tab py-4 px-1 text-sm font-medium border-b-2 border-transparent hover:text-blue-600 transition-colors tab-active">All Content</button>
+            <button onclick="filterBy('it-director', event)" class="persona-tab py-4 px-1 text-sm font-medium border-b-2 border-transparent hover:text-blue-600 transition-colors">Director of IT</button>
+            <button onclick="filterBy('cyber-sec', event)" class="persona-tab py-4 px-1 text-sm font-medium border-b-2 border-transparent hover:text-blue-600 transition-colors">Cyber Security</button>
+            <button onclick="filterBy('ai-architect', event)" class="persona-tab py-4 px-1 text-sm font-medium border-b-2 border-transparent hover:text-blue-600 transition-colors">AI Architect</button>
+            <button onclick="filterBy('pm', event)" class="persona-tab py-4 px-1 text-sm font-medium border-b-2 border-transparent hover:text-blue-600 transition-colors">Project Manager</button>
+            <button onclick="filterBy('infra', event)" class="persona-tab py-4 px-1 text-sm font-medium border-b-2 border-transparent hover:text-blue-600 transition-colors">Cloud & Infra</button>
+            <button onclick="filterBy('data-owner', event)" class="persona-tab py-4 px-1 text-sm font-medium border-b-2 border-transparent hover:text-blue-600 transition-colors">Data Owner</button>
+        </div>
+    </nav>
+
+    <!-- Content Grid -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div id="contentGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <!-- IQ STACK -->
+            <div class="content-item card-hover bg-white p-6 rounded-xl shadow-sm border border-gray-100" data-persona="ai-architect infra it-director">
+                <div class="flex items-center mb-4">
+                    <div class="w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center text-indigo-600 mr-3">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <h3 class="font-bold text-lg">The Microsoft IQ Stack</h3>
+                </div>
+                <p class="text-gray-600 text-sm mb-4">A unified intelligence architecture across the enterprise.</p>
+                <ul class="space-y-3">
+                    <li class="flex items-start">
+                        <span class="font-semibold text-blue-600 mr-2">Work IQ:</span>
+                        <span class="text-sm text-gray-700">M365 graph, emails, and collaboration patterns.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="font-semibold text-blue-600 mr-2">Fabric IQ:</span>
+                        <span class="text-sm text-gray-700">Live operational data and real-time business state.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="font-semibold text-blue-600 mr-2">Foundry IQ:</span>
+                        <span class="text-sm text-gray-700">Curated institutional knowledge for agentic retrieval.</span>
+                    </li>
+                </ul>
+                <div class="mt-4 pt-4 border-t border-gray-50 flex flex-wrap gap-2">
+                    <span class="px-2 py-1 bg-gray-100 text-xs text-gray-500 rounded">Architecture</span>
+                    <span class="px-2 py-1 bg-gray-100 text-xs text-gray-500 rounded">Foundational</span>
+                </div>
+            </div>
+
+            <!-- AGENT FACTORY -->
+            <div class="content-item card-hover bg-white p-6 rounded-xl shadow-sm border border-gray-100" data-persona="it-director pm">
+                <div class="flex items-center mb-4">
+                    <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 mr-3">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-blue-900">Agent Factory</h3>
+                </div>
+                <p class="text-gray-600 text-sm mb-4 italic">Move from AI experimentation to enterprise execution.</p>
+                <div class="bg-blue-50 p-3 rounded text-sm text-blue-800 mb-4">
+                    "Match teams to platforms, activate intelligence layers, and govern like enterprise systems."
+                </div>
+                <ul class="space-y-2 text-sm text-gray-700">
+                    <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Role-based AI tools & training</li>
+                    <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Single pre-paid plan for scale</li>
+                    <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Accelerate ROI by 5x</li>
+                </ul>
+                <div class="mt-6">
+                    <p class="text-xs font-bold uppercase text-gray-400 tracking-widest mb-2">How to apply</p>
+                    <p class="text-sm text-gray-600">Establish a center of excellence that uses Copilot Studio for low-code and Foundry for pro-code.</p>
+                </div>
+            </div>
+
+            <!-- SECURITY - AGENT 365 -->
+            <div class="content-item card-hover bg-white p-6 rounded-xl shadow-sm border border-gray-100" data-persona="cyber-sec data-owner infra">
+                <div class="flex items-center mb-4">
+                    <div class="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center text-red-600 mr-3">
+                        <i class="fas fa-shield-halved"></i>
+                    </div>
+                    <h3 class="font-bold text-lg">Agent 365 & Security</h3>
+                </div>
+                <p class="text-gray-600 text-sm mb-4">Enterprise governance and control for the age of AI.</p>
+                <ul class="space-y-3">
+                    <li class="bg-gray-50 p-2 rounded border-l-4 border-red-500">
+                        <p class="text-xs font-bold text-gray-500 uppercase">Control Plane</p>
+                        <p class="text-sm">Manage who can use/build agents and monitor costs per group.</p>
+                    </li>
+                    <li class="bg-gray-50 p-2 rounded border-l-4 border-blue-500">
+                        <p class="text-xs font-bold text-gray-500 uppercase">Purview Inheritance</p>
+                        <p class="text-sm">Agents automatically inherit file permissions and sensitivity labels.</p>
+                    </li>
+                    <li class="bg-gray-50 p-2 rounded border-l-4 border-green-500">
+                        <p class="text-xs font-bold text-gray-500 uppercase">Entra Policies</p>
+                        <p class="text-sm">Detect and block risky agents based on behavioral signals.</p>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- FINANCE CASE STUDIES -->
+            <div class="content-item card-hover bg-white p-6 rounded-xl shadow-sm border border-gray-100" data-persona="it-director pm data-owner">
+                <div class="flex items-center mb-4">
+                    <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center text-green-600 mr-3">
+                        <i class="fas fa-landmark-dome"></i>
+                    </div>
+                    <h3 class="font-bold text-lg">Financial Services Sector</h3>
+                </div>
+                <div class="space-y-4">
+                    <div>
+                        <p class="text-sm font-bold text-gray-800">LGT Bank</p>
+                        <p class="text-sm text-gray-600">5-year transformation: Recording customer conversations to automate CRM data entry.</p>
+                    </div>
+                    <div>
+                        <p class="text-sm font-bold text-gray-800">Migros Bank</p>
+                        <p class="text-sm text-gray-600">OCR AI recognition for documents to free up accountants for higher-value curation tasks.</p>
+                    </div>
+                    <div>
+                        <p class="text-sm font-bold text-gray-800">Vaudois Insurance</p>
+                        <p class="text-sm text-gray-600">Focus on FINMA-regulated guardrails and deep employee training.</p>
+                    </div>
+                </div>
+                <div class="mt-4 pt-4 border-t border-gray-50">
+                    <p class="text-xs text-red-600 font-bold"><i class="fas fa-triangle-exclamation mr-1"></i> Rule: No agentic AI without deep topic expertise.</p>
+                </div>
+            </div>
+
+            <!-- INNOVATION - QUANTUM -->
+            <div class="content-item card-hover bg-white p-6 rounded-xl shadow-sm border border-gray-100" data-persona="ai-architect infra">
+                <div class="flex items-center mb-4">
+                    <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center text-purple-600 mr-3">
+                        <i class="fas fa-atom"></i>
+                    </div>
+                    <h3 class="font-bold text-lg">Future Tech Frontier</h3>
+                </div>
+                <div class="space-y-4">
+                    <div class="bg-purple-50 p-3 rounded border border-purple-100">
+                        <h4 class="font-bold text-sm text-purple-900">Majorana 1</h4>
+                        <p class="text-xs text-purple-700 mt-1">Microsoft's proprietary quantum processor for exponential compute capabilities in AI model training.</p>
+                    </div>
+                    <div class="bg-indigo-50 p-3 rounded border border-indigo-100">
+                        <h4 class="font-bold text-sm text-indigo-900">3D NVIDIA Fabric</h4>
+                        <p class="text-xs text-indigo-700 mt-1">Visualizing complex energy building sites using real-time data from Microsoft Fabric in 3D environments.</p>
+                    </div>
+                    <div class="bg-gray-50 p-3 rounded border border-gray-100">
+                        <h4 class="font-bold text-sm text-gray-900">Agentic DevOps</h4>
+                        <p class="text-xs text-gray-700 mt-1">Direct assignment from GitHub to Agents for autonomous issue resolution and PII prioritization.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ROI & MEASUREMENT -->
+            <div class="content-item card-hover bg-white p-6 rounded-xl shadow-sm border border-gray-100" data-persona="it-director pm">
+                <div class="flex items-center mb-4">
+                    <div class="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center text-yellow-600 mr-3">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="font-bold text-lg">ROI & Measuring AI</h3>
+                </div>
+                <p class="text-gray-600 text-sm mb-4">New tools to prove the business case of agentic AI.</p>
+                <div class="space-y-3 text-sm text-gray-700">
+                    <div class="flex justify-between items-center p-2 bg-gray-50 rounded">
+                        <span>Engagement Backend</span>
+                        <span class="text-xs font-bold text-blue-600 uppercase">New</span>
+                    </div>
+                    <div class="flex justify-between items-center p-2 bg-gray-50 rounded">
+                        <span>Deals Created Tracking</span>
+                        <i class="fas fa-check text-green-500"></i>
+                    </div>
+                    <div class="flex justify-between items-center p-2 bg-gray-50 rounded">
+                        <span>CRM Time-Saved Reports</span>
+                        <i class="fas fa-check text-green-500"></i>
+                    </div>
+                </div>
+                <p class="mt-4 text-xs text-gray-500 leading-relaxed italic text-center">
+                    "Agents shouldn't just talk; they should save money by creating tangible business assets."
+                </p>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 mt-12 py-8">
+        <div class="max-w-7xl mx-auto px-4 text-center text-gray-500 text-sm">
+            <p>Microsoft AI Tour Zürich 2026 - Executive Summary Hub</p>
+            <p class="mt-2">Sessions: LTG122-CH, BRK202-CH, BRK320-CH, BRK340-CH, BRK380-CH</p>
+        </div>
+    </footer>
+
+    <script>
+        let currentPersona = 'all';
+
+        function filterBy(persona, event) {
+            currentPersona = persona;
+            // Update tabs
+            document.querySelectorAll('.persona-tab').forEach(tab => {
+                tab.classList.remove('tab-active');
+            });
+            event.currentTarget.classList.add('tab-active');
+            applyFilters();
+        }
+
+        function applyFilters() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const items = document.querySelectorAll('.content-item');
+
+            items.forEach(item => {
+                const text = item.innerText.toLowerCase();
+                const personas = item.getAttribute('data-persona');
+
+                const matchesPersona = currentPersona === 'all' || personas.includes(currentPersona);
+                const matchesSearch = text.includes(searchTerm);
+
+                if (matchesPersona && matchesSearch) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Search logic
+        const searchInput = document.getElementById('searchInput');
+        searchInput.addEventListener('input', applyFilters);
+    </script>
+</body>
+</html>

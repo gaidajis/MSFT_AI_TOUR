@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microsoft AI Tour Zürich 2026 - Executive Summary</title>
+    <style>
+        :root {
+            --primary-color: #0078D4;
+            --secondary-color: #106EBE;
+            --accent-color: #00BCF2;
+            --dark-bg: #1a1a1a;
+            --light-bg: #f3f2f1;
+            --card-bg: #ffffff;
+            --text-primary: #323130;
+            --text-secondary: #605e5c;
+            --border-color: #e1dfdd;
+            --success-color: #107C10;
+            --warning-color: #FF8C00;
+            --danger-color: #D13438;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 30px 0;
+            margin-bottom: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+
+        .search-container {
+            position: relative;
+            flex: 1;
+            max-width: 400px;
+        }
+
+        #searchInput {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid var(--border-color);
+            border-radius: 25px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        #searchInput:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(0, 120, 212, 0.1);
+        }
+
+        .nav-tabs {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-tab {
+            padding: 12px 24px;
+            background: var(--light-bg);
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+        }
+
+        .nav-tab:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .nav-tab.active {
+            background: var(--primary-color);
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 120, 212, 0.3);
+        }
+
+        .content-section {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .card h2 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .card h3 {
+            color: var(--secondary-color);
+            margin: 20px 0 10px 0;
+            font-size: 1.2rem;
+        }
+
+        .card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .card li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .card li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--success-color);
+            font-weight: bold;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 5px 12px;
+            background: var(--accent-color);
+            color: white;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+
+        .tag.security { background: var(--danger-color); }
+        .tag.architecture { background: var(--primary-color); }
+        .tag.strategy { background: var(--success-color); }
+        .tag.data { background: var(--warning-color); }
+
+        .iq-stack-diagram {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .iq-layer {
+            display: flex;
+            align-items: center;
+            padding: 25px;
+            margin: 15px 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 10px;
+            border-left: 6px solid var(--primary-color);
+        }
+
+        .iq-layer.work { border-left-color: #0078D4; }
+        .iq-layer.fabric { border-left-color: #F25022; }
+        .iq-layer.foundry { border-left-color: #7FBA00; }
+
+        .iq-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: white;
+            margin-right: 25px;
+            min-width: 60px;
+            text-align: center;
+        }
+
+        .work .iq-number { background: #0078D4; }
+        .fabric .iq-number { background: #F25022; }
+        .foundry .iq-number { background: #7FBA00; }
+
+        .iq-content h3 {
+            margin-bottom: 10px;
+        }
+
+        .session-badge {
+            display: inline-block;
+            padding: 8px 16px;
+            background: var(--dark-bg);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+
+        .highlight-box h3 {
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 15px 20px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            background: var(--primary-color);
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:hover {
+            background: var(--light-bg);
+        }
+
+        .action-item {
+            background: #f0f8ff;
+            border-left: 4px solid var(--primary-color);
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .action-item strong {
+            color: var(--primary-color);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: white;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+
+            .search-container {
+                max-width: 100%;
+            }
+
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 50px;
+            color: white;
+            font-size: 1.2rem;
+            display: none;
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .filter-btn {
+            padding: 8px 16px;
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: white;
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <div>
+                    <h1>🚀 Microsoft AI Tour Zürich 2026</h1>
+                    <p class="subtitle">Executive Summary & Strategic Implementation Guide</p>
+                </div>
+                <div class="search-container">
+                    <input type="text" id="searchInput" placeholder="🔍 Search topics, sessions, or concepts...">
+                </div>
+            </div>
+        </header>
+
+        <nav class="nav-tabs">
+            <button class="nav-tab active" data-section="overview">📊 Overview</button>
+            <button class="nav-tab" data-section="personas">👥 By Role</button>
+            <button class="nav-tab" data-section="iq-stack">🧠 IQ Stack</button>
+            <button class="nav-tab" data-section="agents">🤖 Agents</button>
+            <button class="nav-tab" data-section="security">🔒 Security</button>
+            <button class="nav-tab" data-section="finance">💰 Finance</button>
+            <button class="nav-tab" data-section="sessions">📋 Sessions</button>
+        </nav>
+
+        <!-- OVERVIEW SECTION -->
+        <section id="overview" class="content-section active">
+            <div class="highlight-box">
+                <h3>🎯 Key Theme: From Experimentation to Frontier Firm</h3>
+                <p>The Microsoft AI Tour Zürich 2026 focused on helping organizations transition from AI experimentation to becoming **Frontier Firms** - enterprises that have successfully operationalized AI at scale with proper governance, security, and measurable ROI.</p>
+            </div>
+
+            <div class="card-grid">
+                <div class="card">
+                    <h2>🏗️ Agent Factory Model</h2>
+                    <p>The unified operating and commercial model to scale AI agents across the enterprise. Matches the right platform to the right builder.</p>
+                    <div class="action-item">
+                        <strong>How to Apply:</strong> Implement a "Build AI with AI" approach. Use Agentic DevOps to assign tasks directly from GitHub to Agents. Focus on "Ownerless Agents" for persistent background processes.
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>📈 ROI Measurement</h2>
+                    <p>New Engagement Backend and ROI Reports track efficiency gains automatically.</p>
+                    <ul>
+                        <li>Deals Created</li>
+                        <li>Time Saved in CRM Filling</li>
+                        <li>Automated Document Matching</li>
+                        <li>Cost per Group/Tenant</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h2>🌐 Microsoft Sovereign Cloud</h2>
+                    <p>Options for Sovereign, Private, and National clouds available for highly regulated sectors.</p>
+                    <span class="tag security">Compliance</span>
+                    <span class="tag architecture">Infrastructure</span>
+                </div>
+
+                <div class="card">
+                    <h2>⚛️ Innovation Frontier</h2>
+                    <h3>Majorana 1</h3>
+                    <p>Microsoft's breakthrough quantum computing processor for future accelerated workloads.</p>
+                    <h3>3D Visualization</h3>
+                    <p>Nvidia 3D visualization integrated with Microsoft Fabric data for complex site selection and technical documents.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PERSONAS SECTION -->
+        <section id="personas" class="content-section">
+            <h2 style="color: white; margin-bottom: 20px;">👥 Guidance by Role</h2>
+            
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All Roles</button>
+                <button class="filter-btn" data-filter="director">Director of IT</button>
+                <button class="filter-btn" data-filter="security">Cyber Security Director</button>
+                <button class="filter-btn" data-filter="architect">AI Architect</button>
+                <button class="filter-btn" data-filter="project">IT Project Managers</button>
+                <button class="filter-btn" data-filter="cloud">Cloud & Infrastructure</button>
+                <button class="filter-btn" data-filter="data">Data Owners</button>
+            </div>
+
+            <div class="card-grid">
+                <div class="card persona-card" data-persona="director project">
+                    <h2>📋 Director of IT & IT Project Managers</h2>
+                    <span class="tag strategy">Strategy</span>
+                    <span class="tag">ROI</span>
+                    
+                    <h3>Focus Areas</h3>
+                    <ul>
+                        <li>Strategy, ROI, and Operationalization</li>
+                        <li>Move from experimentation to execution</li>
+                        <li>Implement Agent Factory model</li>
+                    </ul>
+
+                    <div class="action-item">
+                        <strong>Key Takeaway:</strong> Move from experimentation to execution using the <strong>Agent Factory</strong> model.
+                    </div>
+
+                    <div class="action-item">
+                        <strong>ROI Measurement:</strong> Use the new <strong>Engagement Backend</strong> and <strong>ROI Reports</strong>. Measure success by:
+                        <ul>
+                            <li>Deals Created</li>
+                            <li>Time Saved in CRM Filling</li>
+                            <li>Automated Document Matching</li>
+                        </ul>
+                    </div>
+
+                    <div class="action-item">
+                        <strong>Application:</strong> Implement a "Build AI with AI" approach. Use Agentic DevOps to assign tasks directly from GitHub to Agents. Focus on "Ownerless Agents" for persistent background processes.
+                    </div>
+                </div>
+
+                <div class="card persona-card" data-persona="security data">
+                    <h2>🔒 Cyber Security Director & Data Owners</h2>
+                    <span class="tag security">Security</span>
+                    <span class="tag data">Data</span>
+                    <span class="tag">Compliance</span>
+                    
+                    <h3>Focus Areas</h3>
+                    <ul>
+                        <li>Security, Compliance, and Data Integrity</li>
+                        <li>Zero Trust Architecture</li>
+                        <li>Permission Inheritance</li>
+                    </ul>
+
+                    <div class="action-item">
+                        <strong>Key Takeaway:</strong> AI Security is built on <strong>Zero Trust</strong> and inherits existing Microsoft 365 permissions and <strong>Purview</strong> sensitivity labels.
+                    </div>
+
+                    <h3>Security Tools</h3>
+                    <ul>
+                        <li><strong>Entra Policies:</strong> Detect and block risky agents based on behavioral criteria</li>
+                        <li><strong>Purview AI Dashboard:</strong> View why specific messages or data access attempts were blocked</li>
+                        <li><strong>Agentic Defense:</strong> Deploy "Autonomous Blue Teams" to counter "Ambient Red Teams"</li>
+                    </ul>
+
+                    <div class="action-item">
+                        <strong>Application:</strong> Ensure all data sources (Workday, Oracle, etc.) are connected via secure connectors that respect user-level permissions.
+                    </div>
+                </div>
+
+                <div class="card persona-card" data-persona="architect cloud">
+                    <h2>🏗️ AI Architect, Cloud & Infrastructure</h2>
+                    <span class="tag architecture">Architecture</span>
+                    <span class="tag">Infrastructure</span>
+                    <span class="tag data">Data</span>
+                    
+                    <h3>Focus Areas</h3>
+                    <ul>
+                        <li>Architecture, Integration, and Performance</li>
+                        <li>Microsoft IQ Stack Implementation</li>
+                        <li>System Integration</li>
+                    </ul>
+
+                    <div class="action-item">
+                        <strong>Key Takeaway:</strong> The <strong>Microsoft IQ Stack</strong> provides a unified intelligence layer across the enterprise.
+                    </div>
+
+                    <h3>Architectural Pillars</h3>
+                    <ul>
+                        <li><strong>Foundry IQ:</strong> The knowledge base for RAG (Retrieval-Augmented Generation) using "Agentic Retrieval"</li>
+                        <li><strong>Fabric IQ:</strong> The real-time state of the business (OneLake, Power BI, SQL)</li>
+                        <li><strong>Work IQ:</strong> The context of collaboration (Teams, Outlook, SharePoint)</li>
+                    </ul>
+
+                    <div class="action-item">
+                        <strong>Application:</strong> Utilize the <strong>Model Context Protocol (MCP)</strong> to connect Dynamics 365 and external systems to agents. Explore <strong>Majorana 1</strong> for future quantum-accelerated workloads.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- IQ STACK SECTION -->
+        <section id="iq-stack" class="content-section">
+            <h2 style="color: white; margin-bottom: 20px;">🧠 The Intelligence Stack (IQ Layers)</h2>
+            
+            <div class="iq-stack-diagram">
+                <p style="margin-bottom: 30px; font-size: 1.1rem;">The "IQ Stack" represents the intelligence outcomes Microsoft wants organizations to achieve. These are not separate SKUs but architectural layers that work together.</p>
+                
+                <div class="iq-layer work">
+                    <div class="iq-number">1</div>
+                    <div class="iq-content">
+                        <h3>Work IQ</h3>
+                        <p><strong>Purpose:</strong> Understands <em>how</em> people work and collaborate</p>
+                        <p><strong>Data Sources:</strong> Teams, Outlook, M365 Documents, Graph API</p>
+                        <p><strong>Use Cases:</strong> Meeting insights, email prioritization, document collaboration, workflow automation</p>
+                    </div>
+                </div>
+
+                <div class="iq-layer fabric">
+                    <div class="iq-number">2</div>
+                    <div class="iq-content">
+                        <h3>Fabric IQ</h3>
+                        <p><strong>Purpose:</strong> Represents the live <em>state</em> and actions of the business</p>
+                        <p><strong>Data Sources:</strong> OneLake, Fabric, Power BI, SQL, Real-time telemetry</p>
+                        <p><strong>Use Cases:</strong> Business intelligence, real-time analytics, operational dashboards, data warehousing</p>
+                    </div>
+                </div>
+
+                <div class="iq-layer foundry">
+                    <div class="iq-number">3</div>
+                    <div class="iq-content">
+                        <h3>Foundry IQ</h3>
+                        <p><strong>Purpose:</strong> Provides curated <em>institutional knowledge</em></p>
+                        <p><strong>Data Sources:</strong> SharePoint, Web, Blob Storage, MCP Servers</p>
+                        <p><strong>Use Cases:</strong> RAG (Retrieval-Augmented Generation), knowledge bases, documentation, best practices</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-grid">
+                <div class="card">
+                    <h2>🔄 How IQ Layers Work Together</h2>
+                    <p>The three IQ layers create a comprehensive intelligence ecosystem:</p>
+                    <ul>
+                        <li><strong>Work IQ</strong> captures human collaboration patterns</li>
+                        <li><strong>Fabric IQ</strong> provides real-time business state</li>
+                        <li><strong>Foundry IQ</strong> offers institutional knowledge</li>
+                    </ul>
+                    <div class="action-item">
+                        <strong>Implementation Strategy:</strong> Start by mapping your existing data sources to each IQ layer. Ensure proper data governance and access controls are in place before enabling agentic workflows.
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>🔌 Model Context Protocol (MCP)</h2>
+                    <p>MCP standardizes how agents interact with external data and systems.</p>
+                    <h3>Supported Integrations</h3>
+                    <ul>
+                        <li>Dynamics 365</li>
+                        <li>Workday</li>
+                        <li>Oracle</li>
+                        <li>Third-party APIs</li>
+                    </ul>
+                    <div class="action-item">
+                        <strong>Best Practice:</strong> Use MCP servers to create standardized interfaces for your agents, ensuring consistent behavior and easier maintenance.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AGENTS SECTION -->
+        <section id="agents" class="content-section">
+            <h2 style="color: white; margin-bottom: 20px;">🤖 The Agentic Ecosystem</h2>
+
+            <div class="card-grid">
+                <div class="card">
+                    <h2>🏭 Agent Factory</h2>
+                    <span class="tag strategy">Strategy</span>
+                    <span class="tag architecture">Architecture</span>
+                    
+                    <p>The "supply line" for AI. A unified operating and commercial model to scale AI agents across the enterprise.</p>
+                    
+                    <h3>Key Features</h3>
+                    <ul>
+                        <li>Matches right platform to right builder</li>
+                        <li>Copilot Studio for low-code scenarios</li>
+                        <li>Microsoft Foundry for pro-code development</li>
+                        <li>Standardized deployment pipelines</li>
+                    </ul>
+
+                    <div class="action-item">
+                        <strong>How to Apply:</strong> Establish an Agent Factory in your organization with clear governance policies. Create templates for common agent types and establish review processes for agent deployment.
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>🎛️ Agent 365</h2>
+                    <span class="tag security">Governance</span>
+                    <span class="tag">Management</span>
+                    
+                    <p>The <strong>Control Plane</strong> for governance of all AI agents in your organization.</p>
+                    
+                    <h3>Capabilities</h3>
+                    <ul>
+                        <li>Control who can create and deploy agents</li>
+                        <li>Monitor costs per group/tenant</li>
+                        <li>Manage "Ownerless Agents" and background workflows</li>
+                        <li>Manage agents from both Microsoft and third-party providers</li>
+                        <li>ROI tracking and reporting</li>
+                    </ul>
+
+                    <div class="action-item">
+                        <strong>How to Apply:</strong> Implement Agent 365 as your central governance hub. Define policies for agent creation, set budget limits per department, and establish regular review cycles for agent performance.
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>🛠️ Copilot Studio & MCP</h2>
+                    <span class="tag architecture">Development</span>
+                    <span class="tag data">Integration</span>
+                    
+                    <h3>Model Context Protocol (MCP)</h3>
+                    <p>Standardizes how agents interact with external data sources like Workday, Oracle, and other enterprise systems.</p>
+                    
+                    <h3>Cowork Feature</h3>
+                    <ul>
+                        <li>Multiple agents run in parallel</li>
+                        <li>"Facilitator" agent acts as third team member</li>
+                        <li>Coordinated task execution</li>
+                        <li>Shared context and state management</li>
+                    </ul>
+
+                    <div class="action-item">
+                        <strong>How to Apply:</strong> Use Copilot Studio for rapid prototyping of agents. Leverage MCP to connect enterprise data sources securely. Implement Cowork patterns for complex multi-agent workflows.
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>👻 Ownerless Agents</h2>
+                    <span class="tag architecture">Architecture</span>
+                    <span class="tag">Automation</span>
+                    
+                    <p>Persistent background agents that operate without direct human ownership.</p>
+                    
+                    <h3>Use Cases</h3>
+                    <ul>
+                        <li>Automated monitoring and alerting</li>
+                        <li>Scheduled data processing</li>
+                        <li>Continuous compliance checking</li>
+                        <li>Background workflow orchestration</li>
+                    </ul>
+
+                    <div class="action-item">
+                        <strong>Important:</strong> Ownerless agents still require governance. Define clear escalation paths and monitoring dashboards in Agent 365.
+                    </div>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3>🚀 Agentic DevOps</h3>
+                <p>Assign tasks directly from GitHub to Agents. This enables:</p>
+                <ul>
+                    <li>Automated code review and analysis</li>
+                    <li>Security vulnerability scanning</li>
+                    <li>Documentation generation</li>
+                    <li>Test case creation and execution</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- SECURITY SECTION -->
+        <section id="security" class="content-section">
+            <h2 style="color: white; margin-bottom: 20px;">🔒 Security, Governance & Compliance</h2>
+
+            <div class="card-grid">
+                <div class="card">
+                    <h2>🛡️ Secure by Design</h2>
+                    <span class="tag security">Security</span>
+                    <span class="tag">Foundation</span>
+                    
+                    <p>AI and security are now two sides of the same platform.</p>
+                    
+                    <h3>Core Principles</h3>
+                    <ul>
+                        <li><strong>Secure by Design:</strong> Security built into every layer</li>
+                        <li><strong>Secure by Default:</strong> Safe configurations out of the box</li>
+                        <li><strong>Secure Operations:</strong> Continuous monitoring and response</li>
+                    </ul>
+
+                    <div class="action-item">
+                        <strong>Implementation:</strong> Adopt the OWASP Top 10 for ML and Agents. Implement red team exercises for your AI systems.
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>🏷️ Confidentiality Inheritance</h2>
+                    <span class="tag security">Compliance</span>
+                    <span class="tag data">Data</span>
+                    
+                    <p>Sensitivity labels from Purview are automatically respected by Copilot and Agents.</p>
+                    
+                    <h3>How It Works</h3>
+                    <ul>
+                        <li>Agents inherit permissions of users</li>
+                        <li>Purview labels control data access</li>
+                        <li>Granular control down to specific messages</li>
+                        <li>Audit trails for all AI interactions</li>
+                    </ul>
+
+                    <div class="action-item">
+                        <strong>Best Practice:</strong> Ensure all sensitive data is properly labeled in Purview before enabling AI features. Test agent behavior with different sensitivity levels.
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>🚫 Entra Policies for AI</h2>
+                    <span class="tag security">Security</span>
+                    <span class="tag">Governance</span>
+                    
+                    <p>Detect and block risky agents based on behavioral criteria.</p>
+                    
+                    <h3>Policy Examples</h3>
+                    <ul>
+                        <li>Block agents accessing sensitive data outside business hours</li>
+                        <li>Require approval for agents with external connectivity</li>
+                        <li>Limit token consumption per agent</li>
+                        <li>Detect anomalous agent behavior patterns</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h2>📊 Purview AI Dashboard</h2>
+                    <span class="tag security">Monitoring</span>
+                    <span class="tag data">Visibility</span>
+                    
+                    <p>View insights on why things got blocked at the data level.</p>
+                    
+                    <h3>Capabilities</h3>
+                    <ul>
+                        <li>Down to specific message-level visibility</li>
+                        <li>Real-time blocking notifications</li>
+                        <li>Trend analysis for security incidents</li>
+                        <li>Compliance reporting</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h2>⚔️ Agentic Defense</h2>
+                    <span class="tag security">Security</span>
+                    <span class="tag">AI</span>
+                    
+                    <p>Deploy autonomous security teams powered by AI.</p>
+                    
+                    <h3>Components</h3>
+                    <ul>
+                        <li><strong>Ambient Red Team:</strong> Continuously tests your defenses</li>
+                        <li><strong>Autonomous Blue Team:</strong> Responds to threats in real-time</li>
+                        <li><strong>Sentinel Playbook Generator:</strong> Creates automated response playbooks</li>
+                        <li><strong>Sentinel Data Federation:</strong> Unified security data view</li>
+                    </ul>
+
+                    <div class="action-item">
+                        <strong>Scale:</strong> Microsoft Security processes 100 trillion signals a day across Copilot, Defender, and Purview.
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>🔍 Shadow IT Detection</h2>
+                    <span class="tag security">Governance</span>
+                    <span class="tag">Discovery</span>
+                    
+                    <p>Enhanced app discovery to detect unauthorized AI tools.</p>
+                    
+                    <h3>Features</h3>
+                    <ul>
+                        <li>Automatic detection of AI apps in use</li>
+                        <li>Risk scoring for discovered apps</li>
+                        <li>Integration with App Governance</li>
+                        <li>Remediation workflows</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3>🌐 Zero Trust for AI</h3>
+                <p>All AI security is built on Zero Trust principles:</p>
+                <ul>
+                    <li>Verify explicitly - Always authenticate and authorize</li>
+                    <li>Use least privilege access - Limit user and agent permissions</li>
+                    <li>Assume breach - Minimize blast radius and segment access</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- FINANCE SECTION -->
+        <section id="finance" class="content-section">
+            <h2 style="color: white; margin-bottom: 20px;">💰 Industry Spotlight: Financial Services</h2>
+            <p style="color: white; margin-bottom: 30px; font-size: 1.1rem;">Session BRK202-CH: Pioneering the Future of Financial Services with AI</p>
+
+            <div class="card-grid">
+                <div class="card">
+                    <h2>🏦 LGT</h2>
+                    <span class="tag">Banking</span>
+                    <span class="tag data">Automation</span>
+                    
+                    <p><strong>Speaker:</strong> Head of Business and Innovation</p>
+                    
+                    <h3>Transformation Journey</h3>
+                    <ul>
+                        <li>5-year long transformation program</li>
+                        <li>Recording customer conversations</li>
+                        <li>Automatic CRM filling from calls</li>
+                        <li>Reduced manual data entry</li>
+                    </ul>
+
+                    <div class="action-item">
+                        <strong>Business Case:</strong> Significant time savings in post-call documentation, improved data accuracy, and better customer experience.
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>🏛️ Migros Bank</h2>
+                    <span class="tag">Banking</span>
+                    <span class="tag">OCR</span>
+                    <span class="tag">Automation</span>
+                    
+                    <p><strong>Speaker:</strong> Head of Data Automation and AI</p>
+                    
+                    <h3>Focus Areas</h3>
+                    <ul>
+                        <li>Incoming documents processing</li>
+                        <li>Efficiency gains in OCR AI recognition</li>
+                        <li>Avoid repetitive manual tasks</li>
+                        <li>Change roles of people strategically</li>
+                    </ul>
+
+                    <div class="action-item">
+                        <strong>Key Insight:</strong> An accountant should focus on higher-value tasks than matching and handling documents. Move people to curating data instead of firing them.
+                    </div>
+
+                    <h3>Lessons Learned</h3>
+                    <ul>
+                        <li>No agentic AI without understanding the topic</li>
+                        <li>Risk Management must be in place</li>
+                        <li>Human-in-the-loop for critical decisions</li>
+                        <li>Open to all models with proper governance</li>
+                        <li>Policy framework is essential</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h2>🛡️ Vaudois Assurances</h2>
+                    <span class="tag">Insurance</span>
+                    <span class="tag security">Compliance</span>
+                    
+                    <p><strong>Speaker:</strong> CFO</p>
+                    
+                    <h3>Key Priorities</h3>
+                    <ul>
+                        <li>FINMA regulatory compliance</li>
+                        <li>Employee training programs</li>
+                        <li>Guardrails for AI usage</li>
+                        <li>Risk management frameworks</li>
+                    </ul>
+
+                    <div class="action-item">
+                        <strong>Approach:</strong> Nothing special needed - focus on proper training, clear policies, and maintaining human oversight.
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>📋 Common Themes in Financial Services</h2>
+                    <span class="tag security">Regulation</span>
+                    <span class="tag">Best Practices</span>
+                    
+                    <h3>Critical Success Factors</h3>
+                    <ul>
+                        <li><strong>Human-in-the-Loop:</strong> Essential for high-risk decisions</li>
+                        <li><strong>Governance First:</strong> Policy framework before deployment</li>
+                        <li><strong>Training:</strong> Employees must understand AI capabilities and limitations</li>
+                        <li><strong>Transparency:</strong> Open about AI usage with customers and regulators</li>
+                        <li><strong>Gradual Rollout:</strong> Start with low-risk scenarios, build confidence</li>
+                        <li><strong>Role Evolution:</strong> Reskill rather than replace employees</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3>⚖️ FINMA Compliance Considerations</h3>
+                <p>For Swiss financial institutions, FINMA regulations require:</p>
+                <ul>
+                    <li>Clear accountability for AI-driven decisions</li>
+                    <li>Documented risk assessment processes</li>
+                    <li>Audit trails for all automated processes</li>
+                    <li>Human oversight for critical functions</li>
+                    <li>Data protection and privacy compliance</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- SESSIONS SECTION -->
+        <section id="sessions" class="content-section">
+            <h2 style="color: white; margin-bottom: 20px;">📋 Session Index</h2>
+
+            <div class="card-grid">
+                <div class="card">
+                    <span class="session-badge">LTG122-CH</span>
+                    <h2>Copilot Control System</h2>
+                    <h3>Secure, Manage, and Measure AI</h3>
+                    
+                    <p>Learn how to implement comprehensive governance for your AI initiatives.</p>
+                    
+                    <h3>Key Topics</h3>
+                    <ul>
+                        <li>Purview & Copilot security inheritance</li>
+                        <li>AI Admin controls for agents and costs</li>
+                        <li>Group-based permissions in tenant</li>
+                        <li>Workday and Oracle integration</li>
+                        <li>ROI Reports based on deals created</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <span class="session-badge">BRK202-CH</span>
+                    <h2>Financial Services AI</h2>
+                    <h3>Pioneering the Future with AI</h3>
+                    
+                    <p>Real-world case studies from leading financial institutions.</p>
+                    
+                    <h3>Featured Companies</h3>
+                    <ul>
+                        <li>LGT - 5-year transformation journey</li>
+                        <li>Migros Bank - Document automation</li>
+                        <li>Vaudois - Compliance and governance</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <span class="session-badge">BRK320-CH</span>
+                    <h2>Becoming a Frontier Firm</h2>
+                    <h3>Copilot + Agents at Scale</h3>
+                    
+                    <p>Transform your organization into an AI-first enterprise.</p>
+                    
+                    <h3>Key Concepts</h3>
+                    <ul>
+                        <li>Microsoft IQ (Work IQ, Teams IQ, Foundry IQ)</li>
+                        <li>Rules and workflows automation</li>
+                        <li>Fabric IQ - state and actions of business</li>
+                        <li>Data agent implementation</li>
+                        <li>Agent 365 and Agent Factory</li>
+                        <li>Confidentiality labels in M365</li>
+                        <li>Graph API and fine-grained permissions</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <span class="session-badge">BRK340-CH</span>
+                    <h2>Driving Business Innovation</h2>
+                    <h3>AI Apps and Agents</h3>
+                    
+                    <p>Practical applications of AI across industries.</p>
+                    
+                    <h3>Highlights</h3>
+                    <ul>
+                        <li>Work IQ: Data, context, skills and tools</li>
+                        <li>Multiple runs in parallel</li>
+                        <li>Cowork (agent) facilitator concept</li>
+                        <li>Restricted data per source</li>
+                        <li>Technical documents for energy sector</li>
+                        <li>Agentic DevOps from GitHub</li>
+                        <li>Building AI with AI</li>
+                        <li>Microsoft Foundry Agent Service</li>
+                        <li>On-premise options for security</li>
+                        <li>11k+ agents available</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <span class="session-badge">BRK380-CH</span>
+                    <h2>End-to-End Security</h2>
+                    <h3>In the Age of Agentic AI</h3>
+                    
+                    <p>Comprehensive security strategies for AI deployments.</p>
+                    
+                    <h3>Security Framework</h3>
+                    <ul>
+                        <li>Secure by design, default, and operations</li>
+                        <li>Red team (ambient) vs Blue team (autonomous)</li>
+                        <li>Agentic defense strategies</li>
+                        <li>100 trillion signals/day processing</li>
+                        <li>OWASP Top 10 for ML and Agents</li>
+                        <li>Agents 365 controls (including non-MS)</li>
+                        <li>Zero Trust architecture</li>
+                        <li>Entra policies for risky agents</li>
+                        <li>Purview insights and blocking</li>
+                        <li>Shadow IT detection</li>
+                        <li>Sentinel playbook generator</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="no-results" id="noResults">
+            <h3>No results found</h3>
+            <p>Try adjusting your search terms or browse through the sections above.</p>
+        </div>
+
+        <footer>
+            <p>Generated based on Microsoft AI Tour Zürich - April 2026 Findings</p>
+            <p>For internal use and strategic planning purposes</p>
+        </footer>
+    </div>
+
+    <script>
+        // Tab Navigation
+        const navTabs = document.querySelectorAll('.nav-tab');
+        const contentSections = document.querySelectorAll('.content-section');
+
+        navTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs and sections
+                navTabs.forEach(t => t.classList.remove('active'));
+                contentSections.forEach(s => s.classList.remove('active'));
+
+                // Add active class to clicked tab
+                tab.classList.add('active');
+
+                // Show corresponding section
+                const sectionId = tab.getAttribute('data-section');
+                document.getElementById(sectionId).classList.add('active');
+            });
+        });
+
+        // Search Functionality
+        const searchInput = document.getElementById('searchInput');
+        const noResults = document.getElementById('noResults');
+
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            let hasResults = false;
+
+            // Search through all cards and content
+            const allContent = document.querySelectorAll('.card, .iq-layer, .highlight-box, .action-item');
+            
+            allContent.forEach(element => {
+                const text = element.textContent.toLowerCase();
+                if (searchTerm === '' || text.includes(searchTerm)) {
+                    element.style.display = '';
+                    hasResults = true;
+                } else {
+                    element.style.display = 'none';
+                }
+            });
+
+            // Show/hide no results message
+            noResults.style.display = hasResults ? 'none' : 'block';
+        });
+
+        // Persona Filter
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const personaCards = document.querySelectorAll('.persona-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.getAttribute('data-filter');
+
+                personaCards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-persona').includes(filter)) {
+                        card.style.display = '';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

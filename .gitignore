@@ -1,0 +1,1 @@
+(docs/index.html is a build artifact, but since it's in docs/ which is typically a source directory for documentation, and there are no other build artifacts or dependencies shown, only adding this specific case would be overkill for a general rule)

@@ -1120,7 +1120,12 @@ flowchart TD
 </div>
 
 <script>
-    mermaid.initialize({ startOnLoad: true, theme: 'default', securityLevel: 'loose' });
+    mermaid.initialize({ startOnLoad: false, theme: 'default', securityLevel: 'loose' });
+
+    // Render all mermaid diagrams on initial load
+    document.addEventListener('DOMContentLoaded', function() {
+        mermaid.run();
+    });
 
     // Tab Navigation
     const navTabs = document.querySelectorAll('.nav-tab');
@@ -1130,7 +1135,16 @@ flowchart TD
             navTabs.forEach(t => t.classList.remove('active'));
             contentSections.forEach(s => s.classList.remove('active'));
             tab.classList.add('active');
-            document.getElementById(tab.getAttribute('data-section')).classList.add('active');
+            const targetSection = document.getElementById(tab.getAttribute('data-section'));
+            targetSection.classList.add('active');
+            
+            // Re-render mermaid diagrams in the newly activated section
+            setTimeout(() => {
+                const mermaidElements = targetSection.querySelectorAll('.mermaid:not([data-processed="true"])');
+                if (mermaidElements.length > 0) {
+                    mermaid.run({ nodes: mermaidElements });
+                }
+            }, 50);
         });
     });
 

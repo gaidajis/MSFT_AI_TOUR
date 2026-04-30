@@ -509,8 +509,15 @@ flowchart LR
     P1 --> G1
     P2 --> G1
     P3 --> G1
-    G1 --> G2
-    G1 --> G3
+    G1 --> G2["Purview Labels"]
+    G1 --> G3["Entra Policies"]
+
+    classDef builders fill:#EAF3FF,stroke:#0078D4,color:#1b1b1b;
+    classDef platforms fill:#FFF4E5,stroke:#FF8C00,color:#1b1b1b;
+    classDef governance fill:#E7F6EA,stroke:#107C10,color:#1b1b1b;
+    class B1,B2,B3 builders;
+    class P1,P2,P3 platforms;
+    class G1,G2,G3 governance;
     style G1 fill:#107C10,color:#fff
             </div>
         </div>
@@ -607,10 +614,10 @@ flowchart LR
             <div class="mermaid">
 flowchart TD
     A["Agent Request"] --> B{"Entra Identity Check"}
-    B -->|Risky or Unknown| C["Block + Alert"]
-    B -->|Verified| D{"Purview Label Check"}
-    D -->|Sensitivity exceeds Clearance| E["Block + Audit Log"]
-    D -->|Permitted| F{"Least Privilege Scope"}
+    B -->|"Risky / Unknown"| C["Block + Alert"]
+    B -->|"Verified"| D{"Purview Label Check"}
+    D -->|"Sensitivity > Clearance"| E["Block + Audit Log"]
+    D -->|"Permitted"| F{"Least Privilege Scope"}
     F --> G["Execute Action"]
     G --> H["Purview AI Dashboard Log"]
     H --> I["Sentinel SIEM"]
@@ -836,7 +843,14 @@ flowchart TD
     D1 --> G1
     D2 --> G1
     D3 --> G1
-    G1 --> G2
+    G1 --> G2["Purview (GDPR)"]
+
+    classDef journey fill:#EAF3FF,stroke:#0078D4,color:#1b1b1b;
+    classDef data fill:#FFF4E5,stroke:#FF8C00,color:#1b1b1b;
+    classDef gov fill:#E7F6EA,stroke:#107C10,color:#1b1b1b;
+    class S1,S2,S3,S4,S5,S6 journey;
+    class D1,D2,D3 data;
+    class G1,G2 gov;
     style G2 fill:#D13438,color:#fff
     style G1 fill:#107C10,color:#fff
             </div>

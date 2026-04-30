@@ -244,7 +244,7 @@
     <header>
         <div class="header-content">
             <div class="header-brand">
-                <h1>🚀 Microsoft AI Tour Zürich 2026</h1>
+                <h1>Microsoft AI Tour Zürich 2026</h1>
                 <p class="subtitle">Executive Strategy &amp; Architecture Hub — April 2026</p>
             </div>
             <div class="header-meta">
@@ -489,9 +489,9 @@ sequenceDiagram
             <div class="mermaid">
 flowchart LR
     subgraph Builders
-        B1["Citizen Builder\n(Low-code)"]
-        B2["Pro Developer\n(Pro-code)"]
-        B3["Data Scientist\n(ML / Fine-tune)"]
+        B1["Citizen Builder<br/>(Low-code)"]
+        B2["Pro Developer<br/>(Pro-code)"]
+        B3["Data Scientist<br/>(ML / Fine-tune)"]
     end
     subgraph Platforms
         P1["Copilot Studio"]
@@ -499,7 +499,7 @@ flowchart LR
         P3["Azure AI Studio"]
     end
     subgraph Governance
-        G1["Agent 365\nControl Plane"]
+        G1["Agent 365<br/>Control Plane"]
         G2["Purview Labels"]
         G3["Entra Policies"]
     end
@@ -609,7 +609,7 @@ flowchart TD
     A["Agent Request"] --> B{"Entra Identity Check"}
     B -->|"Risky / Unknown"| C["Block + Alert"]
     B -->|"Verified"| D{"Purview Label Check"}
-    D -->|"Sensitivity > User Clearance"| E["Block + Audit Log"]
+    D -->|"Sensitivity exceeds Clearance"| E["Block + Audit Log"]
     D -->|"Permitted"| F{"Least Privilege Scope"}
     F --> G["Execute Action"]
     G --> H["Purview AI Dashboard Log"]
@@ -816,15 +816,15 @@ flowchart TD
 flowchart TD
     subgraph StudentJourney
         S1["Prospective Student"] --> S2["Application Agent"]
-        S2 --> S3["Admissions CRM\n(Dynamics 365)"]
+        S2 --> S3["Admissions CRM<br/>(Dynamics 365)"]
         S3 --> S4["Enrolled Student"]
-        S4 --> S5["Learning Agent\n(Course Support)"]
-        S4 --> S6["Career Agent\n(Alumni Network)"]
+        S4 --> S5["Learning Agent<br/>(Course Support)"]
+        S4 --> S6["Career Agent<br/>(Alumni Network)"]
     end
     subgraph DataPlatform
-        D1["Work IQ\nTeams Classes"]
-        D2["Fabric IQ\nStudent SIS / Finance"]
-        D3["Foundry IQ\nCourse Library / Policies"]
+        D1["Work IQ<br/>Teams Classes"]
+        D2["Fabric IQ<br/>Student SIS / Finance"]
+        D3["Foundry IQ<br/>Course Library / Policies"]
     end
     subgraph Governance
         G1["Agent 365"]

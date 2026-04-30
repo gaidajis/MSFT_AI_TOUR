@@ -488,29 +488,14 @@ sequenceDiagram
             <h3>🏭 Agent Factory Operating Model</h3>
             <div class="mermaid">
 flowchart LR
-    subgraph Builders
-        B1["Citizen Builder\n(Low-code)"]
-        B2["Pro Developer\n(Pro-code)"]
-        B3["Data Scientist\n(ML and Fine-tune)"]
-    end
-    subgraph Platforms
-        P1["Copilot Studio"]
-        P2["Microsoft Foundry"]
-        P3["Azure AI Studio"]
-    end
-    subgraph Governance
-        G1["Agent 365\nControl Plane"]
-        G2["Purview Labels"]
-        G3["Entra Policies"]
-    end
-    B1 --> P1
-    B2 --> P2
-    B3 --> P3
-    P1 --> G1
+    B1["Citizen Builder"] --> P1["Copilot Studio"]
+    B2["Pro Developer"] --> P2["Microsoft Foundry"]
+    B3["Data Scientist"] --> P3["Azure AI Studio"]
+    P1 --> G1["Agent 365"]
     P2 --> G1
     P3 --> G1
-    G1 --> G2
-    G1 --> G3
+    G1 --> G2["Purview Labels"]
+    G1 --> G3["Entra Policies"]
     style G1 fill:#107C10,color:#fff
             </div>
         </div>
@@ -607,10 +592,10 @@ flowchart LR
             <div class="mermaid">
 flowchart TD
     A["Agent Request"] --> B{"Entra Identity Check"}
-    B -->|Risky or Unknown| C["Block + Alert"]
-    B -->|Verified| D{"Purview Label Check"}
-    D -->|Sensitivity exceeds Clearance| E["Block + Audit Log"]
-    D -->|Permitted| F{"Least Privilege Scope"}
+    B --> C["Block + Alert"]
+    B --> D{"Purview Label Check"}
+    D --> E["Block + Audit Log"]
+    D --> F{"Least Privilege Scope"}
     F --> G["Execute Action"]
     G --> H["Purview AI Dashboard Log"]
     H --> I["Sentinel SIEM"]
@@ -814,29 +799,18 @@ flowchart TD
             <h3>🏫 Higher Education AI Architecture (e.g. EHL / University)</h3>
             <div class="mermaid">
 flowchart TD
-    subgraph StudentJourney
-        S1["Prospective Student"] --> S2["Application Agent"]
-        S2 --> S3["Admissions CRM\n(Dynamics 365)"]
-        S3 --> S4["Enrolled Student"]
-        S4 --> S5["Learning Agent\n(Course Support)"]
-        S4 --> S6["Career Agent\n(Alumni Network)"]
-    end
-    subgraph DataPlatform
-        D1["Work IQ\nTeams Classes"]
-        D2["Fabric IQ\nStudent SIS and Finance"]
-        D3["Foundry IQ\nCourse Library and Policies"]
-    end
-    subgraph Governance
-        G1["Agent 365"]
-        G2["Purview (GDPR)"]
-    end
-    S5 --> D1
-    S5 --> D3
-    S6 --> D2
-    D1 --> G1
+    S1["Prospective Student"] --> S2["Application Agent"]
+    S2 --> S3["Admissions CRM"]
+    S3 --> S4["Enrolled Student"]
+    S4 --> S5["Learning Agent"]
+    S4 --> S6["Career Agent"]
+    S5 --> D1["Work IQ"]
+    S5 --> D3["Foundry IQ"]
+    S6 --> D2["Fabric IQ"]
+    D1 --> G1["Agent 365"]
     D2 --> G1
     D3 --> G1
-    G1 --> G2
+    G1 --> G2["Purview GDPR"]
     style G2 fill:#D13438,color:#fff
     style G1 fill:#107C10,color:#fff
             </div>
@@ -1122,12 +1096,28 @@ flowchart TD
 <script>
     mermaid.initialize({ startOnLoad: false, theme: 'default', securityLevel: 'loose' });
 
-    // Render all mermaid diagrams on initial load
+    function renderMermaidInSection(section) {
+        if (!section) return;
+        const diagrams = Array.from(section.querySelectorAll('.mermaid'));
+        if (diagrams.length === 0) return;
+
+        // Force Mermaid to (re)process diagrams when a tab becomes visible.
+        diagrams.forEach(node => node.removeAttribute('data-processed'));
+
+        if (typeof mermaid.run === 'function') {
+            mermaid.run({ nodes: diagrams });
+        } else {
+            mermaid.init(undefined, diagrams);
+        }
+    }
+
+    // Render only the visible section on initial load.
     document.addEventListener('DOMContentLoaded', function() {
-        mermaid.run();
+        const activeSection = document.querySelector('.content-section.active');
+        renderMermaidInSection(activeSection);
     });
 
-    // Tab Navigation — re-render mermaid diagrams when switching to a previously hidden tab
+    // Tab Navigation — render Mermaid after activating the selected tab.
     const navTabs = document.querySelectorAll('.nav-tab');
     const contentSections = document.querySelectorAll('.content-section');
     navTabs.forEach(tab => {
@@ -1138,17 +1128,7 @@ flowchart TD
             const sectionId = tab.getAttribute('data-section');
             const section = document.getElementById(sectionId);
             section.classList.add('active');
-
-            // Mermaid only processes visible elements on startOnLoad.
-            // Re-render any diagrams that were hidden and not yet processed.
-            const unprocessed = Array.from(section.querySelectorAll('.mermaid:not([data-processed="true"])'));
-            if (unprocessed.length > 0) {
-                if (typeof mermaid.run === 'function') {
-                    mermaid.run({ nodes: unprocessed });
-                } else {
-                    mermaid.init(undefined, unprocessed);
-                }
-            }
+            renderMermaidInSection(section);
         });
     });
 

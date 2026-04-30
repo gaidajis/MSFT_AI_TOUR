@@ -5,66 +5,91 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Microsoft AI Tour Zürich 2026 - Enterprise Agentic Architecture</title>
     <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             /* Microsoft Fluent Design System Colors */
             --msft-blue: #0078D4;
             --msft-blue-dark: #005A9E;
-            --msft-blue-light: #C7E0F4;
+            --msft-blue-light: #DEECF9;
+            --msft-blue-subtle: #EFF6FC;
             --fabric-orange: #F25022;
+            --fabric-orange-light: #FDE7E0;
             --foundry-green: #7FBA00;
+            --foundry-green-light: #E8F5D9;
             --security-red: #D13438;
+            --security-red-light: #FDE8E9;
             --success-green: #107C10;
+            --success-green-light: #DFF6DD;
+            --purple-accent: #8764B8;
+            --purple-light: #F3E5F9;
+            --teal-accent: #00B7C3;
+            --teal-light: #E0F7F8;
             
-            /* Professional Neutral Palette */
-            --slate-900: #1e293b;
-            --slate-800: #334155;
-            --slate-700: #475569;
-            --slate-600: #64748b;
-            --slate-500: #94a3b8;
-            --slate-400: #cbd5e1;
-            --slate-300: #e2e8f0;
-            --slate-200: #f1f5f9;
-            --slate-100: #f8fafc;
+            /* Professional Neutral Palette - Light Theme */
+            --slate-900: #0f172a;
+            --slate-800: #1e293b;
+            --slate-700: #334155;
+            --slate-600: #475569;
+            --slate-500: #64748b;
+            --slate-400: #94a3b8;
+            --slate-300: #cbd5e1;
+            --slate-200: #e2e8f0;
+            --slate-100: #f1f5f9;
+            --slate-50: #f8fafc;
             --white: #ffffff;
+            
+            /* Warm neutrals for depth */
+            --warm-gray-100: #fafaf9;
+            --warm-gray-200: #f5f5f4;
+            --warm-gray-300: #e7e5e4;
             
             /* Semantic Colors */
             --primary: var(--msft-blue);
             --primary-hover: var(--msft-blue-dark);
+            --primary-subtle: var(--msft-blue-subtle);
             --accent: var(--fabric-orange);
             --secondary: var(--foundry-green);
             --danger: var(--security-red);
             --success: var(--success-green);
+            --purple: var(--purple-accent);
+            --teal: var(--teal-accent);
             
-            /* Backgrounds */
-            --bg-primary: var(--slate-100);
+            /* Backgrounds - Professional Light Theme */
+            --bg-primary: linear-gradient(180deg, #fafbfc 0%, #f0f4f8 100%);
             --bg-secondary: var(--white);
-            --bg-tertiary: var(--slate-200);
-            --bg-dark: var(--slate-900);
+            --bg-tertiary: var(--warm-gray-100);
+            --bg-card: var(--white);
+            --bg-nav: rgba(255, 255, 255, 0.95);
             
             /* Text */
-            --text-primary: var(--slate-900);
-            --text-secondary: var(--slate-700);
+            --text-primary: var(--slate-800);
+            --text-secondary: var(--slate-600);
             --text-tertiary: var(--slate-500);
             --text-inverse: var(--white);
+            --text-link: var(--msft-blue);
             
             /* Borders */
             --border-light: var(--slate-200);
             --border-medium: var(--slate-300);
             --border-dark: var(--slate-400);
+            --border-primary: var(--msft-blue-light);
             
-            /* Shadows */
-            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            /* Shadows - Soft and Professional */
+            --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.03);
+            --shadow-sm: 0 2px 4px 0 rgba(0, 0, 0, 0.04);
+            --shadow-md: 0 4px 8px -2px rgba(0, 0, 0, 0.06), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+            --shadow-lg: 0 8px 16px -4px rgba(0, 0, 0, 0.08), 0 4px 8px -2px rgba(0, 0, 0, 0.04);
+            --shadow-xl: 0 12px 24px -8px rgba(0, 0, 0, 0.1), 0 8px 16px -4px rgba(0, 0, 0, 0.06);
+            --shadow-2xl: 0 20px 40px -12px rgba(0, 0, 0, 0.12), 0 12px 24px -8px rgba(0, 0, 0, 0.08);
+            --shadow-glow: 0 0 40px rgba(0, 120, 212, 0.15);
             
             /* Transitions */
             --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
             --transition-base: 300ms cubic-bezier(0.4, 0, 0.2, 1);
             --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-bounce: 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
+            --transition-bounce: 600ms cubic-bezier(0.34, 1.56, 0.64, 1);
+            --transition-elastic: 700ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
         }
 
         * {
@@ -78,28 +103,33 @@
         }
 
         body {
-            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Inter', system-ui, sans-serif;
+            font-family: 'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
             line-height: 1.7;
             color: var(--text-primary);
             background: var(--bg-primary);
+            background-attachment: fixed;
             min-height: 100vh;
             overflow-x: hidden;
         }
 
-        /* Animated Background */
-        .bg-gradient {
+        /* Subtle Animated Background Pattern */
+        .bg-pattern {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, 
-                var(--slate-900) 0%, 
-                var(--slate-800) 25%, 
-                var(--slate-700) 50%, 
-                var(--slate-800) 75%, 
-                var(--slate-900) 100%);
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(0, 120, 212, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(127, 186, 0, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(242, 80, 34, 0.02) 0%, transparent 40%);
             z-index: -2;
+            animation: bgPulse 20s ease-in-out infinite;
+        }
+
+        @keyframes bgPulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.05); }
         }
 
         .bg-overlay {
@@ -108,20 +138,20 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%230078D4' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%230078D4' fill-opacity='0.02'%3E%3Cpath d='M40 30v10H30v10h10v10h10V50h10V40H50V30H40zm0-20V0H30v10H20v10h10v10h10V20h10V10H40z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
             z-index: -1;
-            animation: bgPan 60s linear infinite;
+            animation: bgPan 80s linear infinite;
         }
 
         @keyframes bgPan {
             0% { transform: translate(0, 0); }
-            100% { transform: translate(60px, 60px); }
+            100% { transform: translate(80px, 80px); }
         }
 
         .container {
-            max-width: 1600px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 40px 24px;
+            padding: 40px 32px;
         }
 
         /* Header with Animation */

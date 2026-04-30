@@ -1120,7 +1120,12 @@ flowchart TD
 </div>
 
 <script>
-    mermaid.initialize({ startOnLoad: true, theme: 'default', securityLevel: 'loose' });
+    mermaid.initialize({ startOnLoad: false, theme: 'default', securityLevel: 'loose' });
+
+    // Render all mermaid diagrams on initial load
+    document.addEventListener('DOMContentLoaded', function() {
+        mermaid.run();
+    });
 
     // Tab Navigation — re-render mermaid diagrams when switching to a previously hidden tab
     const navTabs = document.querySelectorAll('.nav-tab');

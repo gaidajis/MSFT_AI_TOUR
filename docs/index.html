@@ -3,1843 +3,1163 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Microsoft AI Tour Zürich 2026 - Enterprise Agentic Architecture</title>
-    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Microsoft AI Tour Zürich 2026 — Executive Hub</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
     <style>
         :root {
-            /* Microsoft Fluent Design System Colors */
-            --msft-blue: #0078D4;
-            --msft-blue-dark: #005A9E;
-            --msft-blue-light: #DEECF9;
-            --msft-blue-subtle: #EFF6FC;
-            --fabric-orange: #F25022;
-            --fabric-orange-light: #FDE7E0;
-            --foundry-green: #7FBA00;
-            --foundry-green-light: #E8F5D9;
-            --security-red: #D13438;
-            --security-red-light: #FDE8E9;
-            --success-green: #107C10;
-            --success-green-light: #DFF6DD;
-            --purple-accent: #8764B8;
-            --purple-light: #F3E5F9;
-            --teal-accent: #00B7C3;
-            --teal-light: #E0F7F8;
-            
-            /* Professional Neutral Palette - Light Theme */
-            --slate-900: #0f172a;
-            --slate-800: #1e293b;
-            --slate-700: #334155;
-            --slate-600: #475569;
-            --slate-500: #64748b;
-            --slate-400: #94a3b8;
-            --slate-300: #cbd5e1;
-            --slate-200: #e2e8f0;
-            --slate-100: #f1f5f9;
-            --slate-50: #f8fafc;
-            --white: #ffffff;
-            
-            /* Warm neutrals for depth */
-            --warm-gray-100: #fafaf9;
-            --warm-gray-200: #f5f5f4;
-            --warm-gray-300: #e7e5e4;
-            
-            /* Semantic Colors */
-            --primary: var(--msft-blue);
-            --primary-hover: var(--msft-blue-dark);
-            --primary-subtle: var(--msft-blue-subtle);
-            --accent: var(--fabric-orange);
-            --secondary: var(--foundry-green);
-            --danger: var(--security-red);
-            --success: var(--success-green);
-            --purple: var(--purple-accent);
-            --teal: var(--teal-accent);
-            
-            /* Backgrounds - Professional Light Theme */
-            --bg-primary: linear-gradient(180deg, #fafbfc 0%, #f0f4f8 100%);
-            --bg-secondary: var(--white);
-            --bg-tertiary: var(--warm-gray-100);
-            --bg-card: var(--white);
-            --bg-nav: rgba(255, 255, 255, 0.95);
-            
-            /* Text */
-            --text-primary: var(--slate-800);
-            --text-secondary: var(--slate-600);
-            --text-tertiary: var(--slate-500);
-            --text-inverse: var(--white);
-            --text-link: var(--msft-blue);
-            
-            /* Borders */
-            --border-light: var(--slate-200);
-            --border-medium: var(--slate-300);
-            --border-dark: var(--slate-400);
-            --border-primary: var(--msft-blue-light);
-            
-            /* Shadows - Soft and Professional */
-            --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.03);
-            --shadow-sm: 0 2px 4px 0 rgba(0, 0, 0, 0.04);
-            --shadow-md: 0 4px 8px -2px rgba(0, 0, 0, 0.06), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
-            --shadow-lg: 0 8px 16px -4px rgba(0, 0, 0, 0.08), 0 4px 8px -2px rgba(0, 0, 0, 0.04);
-            --shadow-xl: 0 12px 24px -8px rgba(0, 0, 0, 0.1), 0 8px 16px -4px rgba(0, 0, 0, 0.06);
-            --shadow-2xl: 0 20px 40px -12px rgba(0, 0, 0, 0.12), 0 12px 24px -8px rgba(0, 0, 0, 0.08);
-            --shadow-glow: 0 0 40px rgba(0, 120, 212, 0.15);
-            
-            /* Transitions */
-            --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-base: 300ms cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-bounce: 600ms cubic-bezier(0.34, 1.56, 0.64, 1);
-            --transition-elastic: 700ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            --ms-blue: #0078D4;
+            --ms-blue-dark: #106EBE;
+            --ms-blue-light: #50E6FF;
+            --ms-green: #107C10;
+            --ms-red: #D13438;
+            --ms-orange: #FF8C00;
+            --ms-slate: #243A5E;
+            --ms-neutral: #F3F2F1;
+            --card-bg: #ffffff;
+            --text-primary: #323130;
+            --text-secondary: #605E5C;
+            --border: #E1DFDD;
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: 'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-            line-height: 1.7;
-            color: var(--text-primary);
-            background: var(--bg-primary);
-            background-attachment: fixed;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
             min-height: 100vh;
-            overflow-x: hidden;
+            color: var(--text-primary);
         }
-
-        /* Subtle Animated Background Pattern */
-        .bg-pattern {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                radial-gradient(circle at 20% 30%, rgba(0, 120, 212, 0.03) 0%, transparent 50%),
-                radial-gradient(circle at 80% 70%, rgba(127, 186, 0, 0.03) 0%, transparent 50%),
-                radial-gradient(circle at 40% 80%, rgba(242, 80, 34, 0.02) 0%, transparent 40%);
-            z-index: -2;
-            animation: bgPulse 20s ease-in-out infinite;
+        @keyframes gradientShift {
+            0%   { background-position: 0% 50%; }
+            50%  { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
+        .container { max-width: 1400px; margin: 0 auto; padding: 20px; }
 
-        @keyframes bgPulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.8; transform: scale(1.05); }
-        }
-
-        .bg-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%230078D4' fill-opacity='0.02'%3E%3Cpath d='M40 30v10H30v10h10v10h10V50h10V40H50V30H40zm0-20V0H30v10H20v10h10v10h10V20h10V10H40z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            z-index: -1;
-            animation: bgPan 80s linear infinite;
-        }
-
-        @keyframes bgPan {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(80px, 80px); }
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 40px 32px;
-        }
-
-        /* Header with Animation */
+        /* HEADER */
         header {
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(20px);
-            padding: 48px 0;
-            margin-bottom: 48px;
-            border-radius: 24px;
-            box-shadow: var(--shadow-xl);
-            border: 1px solid var(--border-light);
-            animation: slideDown var(--transition-slow) ease-out;
-            position: relative;
-            overflow: hidden;
-        }
-
-        header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--msft-blue), var(--fabric-orange), var(--foundry-green));
-        }
-
-        @keyframes slideDown {
-            from { 
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to { 
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            flex-wrap: wrap;
-            gap: 32px;
-            padding: 0 40px;
-        }
-
-        .header-title {
-            flex: 1;
-            min-width: 300px;
-        }
-
-        h1 {
-            color: var(--slate-900);
-            font-size: 2.75rem;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            line-height: 1.2;
-            margin-bottom: 16px;
-            background: linear-gradient(135deg, var(--msft-blue) 0%, var(--slate-900) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .subtitle {
-            color: var(--text-secondary);
-            font-size: 1.25rem;
-            font-weight: 400;
-            max-width: 700px;
-        }
-
-        .header-meta {
-            display: flex;
-            gap: 16px;
-            margin-top: 20px;
-            flex-wrap: wrap;
-        }
-
-        .meta-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 16px;
-            background: var(--bg-tertiary);
-            border-radius: 20px;
-            font-size: 0.875rem;
-            font-weight: 500;
-            color: var(--text-secondary);
-            border: 1px solid var(--border-medium);
-        }
-
-        .search-container {
-            position: relative;
-            flex: 1;
-            max-width: 480px;
-            min-width: 280px;
-        }
-
-        #searchInput {
-            width: 100%;
-            padding: 16px 24px 16px 52px;
-            border: 2px solid var(--border-medium);
+            background: rgba(255,255,255,0.97);
+            backdrop-filter: blur(12px);
+            padding: 30px 40px;
             border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+            margin-bottom: 24px;
+        }
+        .header-content { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+        .header-brand h1 { color: var(--ms-blue); font-size: 2.2rem; font-weight: 700; }
+        .header-brand .subtitle { color: var(--text-secondary); font-size: 1.1rem; margin-top: 6px; }
+        .header-meta { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+        .meta-badge {
+            background: var(--ms-slate);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        .search-wrap { position: relative; }
+        #searchInput {
+            width: 320px;
+            padding: 12px 20px;
+            border: 2px solid var(--border);
+            border-radius: 24px;
             font-size: 1rem;
-            transition: all var(--transition-base);
-            background: var(--bg-secondary);
+            transition: all 0.3s;
         }
+        #searchInput:focus { outline: none; border-color: var(--ms-blue); box-shadow: 0 0 0 3px rgba(0,120,212,0.15); }
 
-        #searchInput:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 4px var(--msft-blue-light);
-            background: var(--bg-secondary);
-        }
-
-        .search-icon {
-            position: absolute;
-            left: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--text-tertiary);
-            font-size: 1.25rem;
-            pointer-events: none;
-        }
-
-        /* Navigation Tabs */
+        /* NAV */
         .nav-tabs {
             display: flex;
             gap: 8px;
             flex-wrap: wrap;
-            margin-bottom: 48px;
-            background: rgba(255, 255, 255, 0.98);
-            padding: 12px;
-            border-radius: 20px;
-            box-shadow: var(--shadow-md);
-            border: 1px solid var(--border-light);
-            animation: fadeIn var(--transition-slow) ease-out 0.2s both;
+            background: rgba(255,255,255,0.95);
+            padding: 16px 20px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+            margin-bottom: 24px;
         }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
         .nav-tab {
-            padding: 14px 28px;
-            background: transparent;
+            padding: 10px 22px;
+            background: var(--ms-neutral);
             border: none;
-            border-radius: 14px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 0.9375rem;
-            color: var(--text-secondary);
-            transition: all var(--transition-base);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .nav-tab::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: var(--primary);
-            opacity: 0;
-            transition: opacity var(--transition-base);
-            z-index: -1;
-        }
-
-        .nav-tab:hover {
-            color: var(--primary);
-            background: var(--msft-blue-light);
-        }
-
-        .nav-tab.active {
-            background: var(--primary);
-            color: var(--text-inverse);
-            box-shadow: var(--shadow-md);
-        }
-
-        .nav-tab.active::before {
-            opacity: 1;
-        }
-
-        /* Content Sections */
-        .content-section {
-            display: none;
-            animation: sectionFadeIn var(--transition-slow) ease-out;
-        }
-
-        .content-section.active {
-            display: block;
-        }
-
-        @keyframes sectionFadeIn {
-            from { 
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to { 
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Section Headers */
-        .section-header {
-            margin-bottom: 40px;
-            animation: slideUp var(--transition-base) ease-out 0.3s both;
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .section-header h2 {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--slate-900);
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .section-header p {
-            color: var(--text-secondary);
-            font-size: 1.125rem;
-            max-width: 800px;
-        }
-
-        /* Card Grid */
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 32px;
-            margin-bottom: 48px;
-        }
-
-        .card {
-            background: var(--bg-secondary);
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: var(--shadow-lg);
-            transition: all var(--transition-base);
-            border: 1px solid var(--border-light);
-            position: relative;
-            overflow: hidden;
-            animation: cardFadeIn var(--transition-base) ease-out both;
-        }
-
-        .card:nth-child(1) { animation-delay: 0.1s; }
-        .card:nth-child(2) { animation-delay: 0.2s; }
-        .card:nth-child(3) { animation-delay: 0.3s; }
-        .card:nth-child(4) { animation-delay: 0.4s; }
-        .card:nth-child(5) { animation-delay: 0.5s; }
-        .card:nth-child(6) { animation-delay: 0.6s; }
-
-        @keyframes cardFadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--primary-hover));
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform var(--transition-base);
-        }
-
-        .card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-2xl);
-            border-color: var(--primary);
-        }
-
-        .card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .card h2 {
-            color: var(--slate-900);
-            margin-bottom: 16px;
-            font-size: 1.5rem;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .card h3 {
-            color: var(--text-primary);
-            margin: 24px 0 12px 0;
-            font-size: 1.125rem;
-            font-weight: 600;
-        }
-
-        .card p {
-            color: var(--text-secondary);
-            line-height: 1.7;
-            margin-bottom: 16px;
-        }
-
-        .card ul {
-            list-style: none;
-            padding-left: 0;
-            margin: 16px 0;
-        }
-
-        .card li {
-            padding: 10px 0 10px 32px;
-            position: relative;
-            color: var(--text-secondary);
-            border-bottom: 1px solid var(--border-light);
-            transition: all var(--transition-fast);
-        }
-
-        .card li:last-child {
-            border-bottom: none;
-        }
-
-        .card li:hover {
-            padding-left: 36px;
-            color: var(--text-primary);
-        }
-
-        .card li:before {
-            content: "→";
-            position: absolute;
-            left: 0;
-            color: var(--primary);
-            font-weight: 600;
-            font-size: 1.125rem;
-            transition: transform var(--transition-fast);
-        }
-
-        .card li:hover:before {
-            transform: translateX(4px);
-        }
-
-        /* Tags */
-        .tag {
-            display: inline-flex;
-            align-items: center;
-            padding: 6px 14px;
-            background: var(--msft-blue-light);
-            color: var(--msft-blue-dark);
-            border-radius: 20px;
-            font-size: 0.8125rem;
-            font-weight: 600;
-            margin-right: 8px;
-            margin-bottom: 8px;
-            border: 1px solid var(--border-medium);
-        }
-
-        .tag.security { 
-            background: rgba(209, 52, 56, 0.1);
-            color: var(--danger);
-            border-color: rgba(209, 52, 56, 0.2);
-        }
-        
-        .tag.architecture { 
-            background: rgba(0, 120, 212, 0.1);
-            color: var(--primary);
-            border-color: rgba(0, 120, 212, 0.2);
-        }
-        
-        .tag.strategy { 
-            background: rgba(16, 124, 16, 0.1);
-            color: var(--success);
-            border-color: rgba(16, 124, 16, 0.2);
-        }
-        
-        .tag.data { 
-            background: rgba(255, 140, 0, 0.1);
-            color: var(--accent);
-            border-color: rgba(255, 140, 0, 0.2);
-        }
-
-        .tag.fabric {
-            background: rgba(242, 80, 34, 0.1);
-            color: var(--fabric-orange);
-            border-color: rgba(242, 80, 34, 0.2);
-        }
-
-        .tag.foundry {
-            background: rgba(127, 186, 0, 0.1);
-            color: var(--foundry-green);
-            border-color: rgba(127, 186, 0, 0.2);
-        }
-
-        /* IQ Stack Diagram */
-        .iq-stack-diagram {
-            background: var(--bg-secondary);
             border-radius: 24px;
-            padding: 48px;
-            margin-bottom: 48px;
-            box-shadow: var(--shadow-xl);
-            border: 1px solid var(--border-light);
-            animation: scaleIn var(--transition-slow) ease-out both;
-        }
-
-        @keyframes scaleIn {
-            from {
-                opacity: 0;
-                transform: scale(0.95);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        .iq-layer {
-            display: flex;
-            align-items: stretch;
-            padding: 32px;
-            margin: 20px 0;
-            background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-secondary) 100%);
-            border-radius: 16px;
-            border: 2px solid var(--border-light);
-            transition: all var(--transition-base);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .iq-layer::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 6px;
-        }
-
-        .iq-layer.work::before { background: var(--msft-blue); }
-        .iq-layer.fabric::before { background: var(--fabric-orange); }
-        .iq-layer.foundry::before { background: var(--foundry-green); }
-
-        .iq-layer:hover {
-            transform: translateX(8px);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--border-dark);
-        }
-
-        .iq-number {
-            font-size: 3.5rem;
-            font-weight: 800;
-            color: var(--text-inverse);
-            margin-right: 32px;
-            min-width: 80px;
-            text-align: center;
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            line-height: 1;
-        }
-
-        .work .iq-number { 
-            background: linear-gradient(135deg, var(--msft-blue), var(--msft-blue-dark));
-        }
-        .fabric .iq-number { 
-            background: linear-gradient(135deg, var(--fabric-orange), #d94016);
-        }
-        .foundry .iq-number { 
-            background: linear-gradient(135deg, var(--foundry-green), #6ba300);
-        }
-
-        .iq-content h3 {
-            margin-bottom: 12px;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--slate-900);
-        }
-
-        .iq-content p {
-            color: var(--text-secondary);
-            margin-bottom: 8px;
-            line-height: 1.6;
-        }
-
-        .iq-content strong {
-            color: var(--text-primary);
+            cursor: pointer;
             font-weight: 600;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            transition: all 0.25s;
+        }
+        .nav-tab:hover { background: var(--ms-blue); color: white; transform: translateY(-2px); }
+        .nav-tab.active { background: var(--ms-blue); color: white; box-shadow: 0 4px 14px rgba(0,120,212,0.35); }
+
+        /* SECTIONS */
+        .content-section { display: none; animation: fadeUp 0.4s ease; }
+        .content-section.active { display: block; }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to   { opacity: 1; transform: translateY(0); }
         }
 
-        /* Mermaid Diagram Container */
-        .mermaid-container {
-            background: var(--bg-secondary);
-            border-radius: 20px;
-            padding: 40px;
-            margin: 32px 0;
-            box-shadow: var(--shadow-lg);
-            border: 1px solid var(--border-light);
-            overflow-x: auto;
+        /* CARDS */
+        .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 22px; margin-bottom: 28px; }
+        .card {
+            background: var(--card-bg);
+            border-radius: 14px;
+            padding: 28px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.09);
+            border-left: 5px solid var(--ms-blue);
+            transition: all 0.3s;
         }
+        .card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,0,0,0.15); }
+        .card.green-accent  { border-left-color: var(--ms-green); }
+        .card.red-accent    { border-left-color: var(--ms-red); }
+        .card.orange-accent { border-left-color: var(--ms-orange); }
+        .card.slate-accent  { border-left-color: var(--ms-slate); }
+        .card h2 { color: var(--ms-blue); margin-bottom: 12px; font-size: 1.4rem; }
+        .card h3 { color: var(--ms-blue-dark); margin: 16px 0 8px; font-size: 1.1rem; }
+        .card ul { list-style: none; padding-left: 0; }
+        .card li { padding: 7px 0 7px 24px; position: relative; }
+        .card li:before { content: "✓"; position: absolute; left: 0; color: var(--ms-green); font-weight: bold; }
 
-        .mermaid-container svg {
-            max-width: 100%;
-            height: auto;
-        }
+        /* TAGS */
+        .tag { display: inline-block; padding: 4px 12px; border-radius: 14px; font-size: 0.82rem; margin: 3px 4px 3px 0; color: white; background: var(--ms-blue-light); }
+        .tag.security  { background: var(--ms-red); }
+        .tag.strategy  { background: var(--ms-green); }
+        .tag.arch      { background: var(--ms-blue); }
+        .tag.data      { background: var(--ms-orange); }
+        .tag.quantum   { background: #7B2FBE; }
+        .tag.edu       { background: #005A9E; }
 
-        /* Highlight Box */
+        /* HIGHLIGHT BOX */
         .highlight-box {
-            background: linear-gradient(135deg, var(--slate-900) 0%, var(--slate-800) 100%);
-            color: var(--text-inverse);
-            padding: 40px;
-            border-radius: 20px;
-            margin: 32px 0;
-            border: 1px solid var(--border-dark);
-            position: relative;
-            overflow: hidden;
+            background: linear-gradient(135deg, #0078D4 0%, #243A5E 100%);
+            color: white;
+            padding: 28px 32px;
+            border-radius: 14px;
+            margin: 20px 0;
         }
+        .highlight-box h3 { color: white; margin-bottom: 12px; font-size: 1.25rem; }
+        .highlight-box ul { padding-left: 20px; }
+        .highlight-box li { margin-bottom: 6px; }
 
-        .highlight-box::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--msft-blue), var(--fabric-orange), var(--foundry-green));
-        }
-
-        .highlight-box h3 {
-            color: var(--text-inverse);
-            margin-bottom: 20px;
-            font-size: 1.5rem;
-            font-weight: 700;
-        }
-
-        .highlight-box p {
-            color: var(--slate-300);
-            line-height: 1.7;
-            margin-bottom: 16px;
-        }
-
-        .highlight-box ul {
-            list-style: none;
-            margin: 16px 0;
-        }
-
-        .highlight-box li {
-            padding: 10px 0 10px 32px;
-            position: relative;
-            color: var(--slate-300);
-        }
-
-        .highlight-box li:before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: var(--foundry-green);
-            font-weight: 700;
-        }
-
-        /* Action Item */
+        /* ACTION ITEM */
         .action-item {
-            background: linear-gradient(135deg, var(--msft-blue-light) 0%, var(--bg-tertiary) 100%);
-            border-left: 4px solid var(--primary);
+            background: #EFF6FC;
+            border-left: 4px solid var(--ms-blue);
+            padding: 14px 18px;
+            margin: 14px 0;
+            border-radius: 0 10px 10px 0;
+        }
+        .action-item strong { color: var(--ms-blue); }
+
+        /* IQ STACK */
+        .iq-stack-diagram { background: white; border-radius: 14px; padding: 36px; margin-bottom: 28px; box-shadow: 0 4px 20px rgba(0,0,0,0.09); }
+        .iq-layer { display: flex; align-items: flex-start; padding: 22px; margin: 14px 0; border-radius: 10px; background: #F8F8F8; border-left: 6px solid var(--ms-blue); gap: 20px; }
+        .iq-layer.work    { border-left-color: #0078D4; }
+        .iq-layer.fabric  { border-left-color: #F25022; }
+        .iq-layer.foundry { border-left-color: #7FBA00; }
+        .iq-number {
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: white;
+            min-width: 56px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        .work    .iq-number { background: #0078D4; }
+        .fabric  .iq-number { background: #F25022; }
+        .foundry .iq-number { background: #7FBA00; }
+
+        /* SESSION BADGE */
+        .session-badge { display: inline-block; padding: 6px 14px; background: var(--ms-slate); color: white; border-radius: 18px; font-size: 0.88rem; font-weight: 700; margin-bottom: 10px; }
+
+        /* TABLE */
+        table { width: 100%; border-collapse: collapse; margin: 18px 0; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,0.09); }
+        th, td { padding: 14px 18px; text-align: left; border-bottom: 1px solid var(--border); }
+        th { background: var(--ms-blue); color: white; font-weight: 600; }
+        tr:hover { background: var(--ms-neutral); }
+
+        /* MERMAID */
+        .mermaid-wrap { background: white; border-radius: 14px; padding: 28px; margin: 20px 0; box-shadow: 0 4px 16px rgba(0,0,0,0.09); overflow-x: auto; }
+        .mermaid-wrap h3 { color: var(--ms-blue); margin-bottom: 16px; font-size: 1.15rem; }
+
+        /* CODE */
+        .code-block { background: #1E1E1E; color: #D4D4D4; padding: 18px 22px; border-radius: 10px; font-family: 'Consolas', monospace; font-size: 0.9rem; overflow-x: auto; margin: 14px 0; line-height: 1.6; }
+        .code-block .kw { color: #569CD6; }
+        .code-block .str { color: #CE9178; }
+        .code-block .cmt { color: #6A9955; }
+
+        /* ROADMAP */
+        .roadmap-phase {
+            background: white;
+            border-radius: 14px;
             padding: 24px 28px;
-            margin: 24px 0;
-            border-radius: 0 16px 16px 0;
-            border: 1px solid var(--border-light);
-            transition: all var(--transition-base);
+            margin-bottom: 20px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.09);
+            border-top: 5px solid var(--ms-blue);
+            position: relative;
         }
+        .roadmap-phase.phase2 { border-top-color: #F25022; }
+        .roadmap-phase.phase3 { border-top-color: #7FBA00; }
+        .roadmap-phase.phase4 { border-top-color: var(--ms-orange); }
+        .phase-label { font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--ms-blue); margin-bottom: 6px; }
+        .roadmap-phase.phase2 .phase-label { color: #F25022; }
+        .roadmap-phase.phase3 .phase-label { color: #7FBA00; }
+        .roadmap-phase.phase4 .phase-label { color: var(--ms-orange); }
+        .roadmap-phase h3 { font-size: 1.2rem; margin-bottom: 12px; color: var(--text-primary); }
 
-        .action-item:hover {
-            border-left-width: 6px;
-            box-shadow: var(--shadow-md);
-        }
+        /* FILTERS */
+        .filter-buttons { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 18px; }
+        .filter-btn { padding: 8px 16px; background: transparent; border: 2px solid white; color: white; border-radius: 20px; cursor: pointer; font-size: 0.9rem; transition: all 0.25s; }
+        .filter-btn:hover, .filter-btn.active { background: white; color: var(--ms-blue); font-weight: 700; }
 
-        .action-item strong {
-            color: var(--msft-blue-dark);
-            font-weight: 700;
-            display: block;
-            margin-bottom: 8px;
-            font-size: 1.0625rem;
-        }
+        /* SECTION TITLES */
+        .section-title { color: white; font-size: 1.7rem; font-weight: 700; margin-bottom: 20px; }
+        .section-subtitle { color: rgba(255,255,255,0.85); margin-bottom: 24px; font-size: 1.05rem; }
 
-        .action-item p, .action-item ul {
-            color: var(--text-secondary);
-            margin-top: 12px;
-        }
+        /* NO RESULTS */
+        .no-results { text-align: center; padding: 60px; color: white; font-size: 1.2rem; display: none; }
 
-        /* Tables */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 32px 0;
-            background: var(--bg-secondary);
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: var(--shadow-lg);
-            border: 1px solid var(--border-light);
-        }
+        /* FOOTER */
+        footer { text-align: center; padding: 30px; color: rgba(255,255,255,0.7); margin-top: 40px; font-size: 0.95rem; }
+        footer a { color: rgba(255,255,255,0.9); }
 
-        th, td {
-            padding: 18px 24px;
-            text-align: left;
-            border-bottom: 1px solid var(--border-light);
-        }
-
-        th {
-            background: linear-gradient(135deg, var(--slate-900), var(--slate-800));
-            color: var(--text-inverse);
-            font-weight: 600;
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        tr {
-            transition: background var(--transition-fast);
-        }
-
-        tr:hover {
-            background: var(--bg-tertiary);
-        }
-
-        tr:last-child td {
-            border-bottom: none;
-        }
-
-        /* Filter Buttons */
-        .filter-buttons {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin-bottom: 32px;
-            padding: 20px;
-            background: var(--bg-secondary);
-            border-radius: 16px;
-            box-shadow: var(--shadow-md);
-            border: 1px solid var(--border-light);
-        }
-
-        .filter-btn {
-            padding: 10px 20px;
-            background: transparent;
-            border: 2px solid var(--border-medium);
-            color: var(--text-secondary);
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 0.875rem;
-            transition: all var(--transition-base);
-        }
-
-        .filter-btn:hover {
-            border-color: var(--primary);
-            color: var(--primary);
-            background: var(--msft-blue-light);
-        }
-
-        .filter-btn.active {
-            background: var(--primary);
-            color: var(--text-inverse);
-            border-color: var(--primary);
-            box-shadow: var(--shadow-md);
-        }
-
-        /* Session Badge */
-        .session-badge {
-            display: inline-flex;
-            align-items: center;
-            padding: 8px 16px;
-            background: linear-gradient(135deg, var(--slate-900), var(--slate-800));
-            color: var(--text-inverse);
-            border-radius: 20px;
-            font-size: 0.8125rem;
-            font-weight: 600;
-            margin-right: 12px;
-            margin-bottom: 16px;
-            border: 1px solid var(--border-dark);
-        }
-
-        /* Schema Box */
-        .schema-box {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-light);
-            border-radius: 16px;
-            padding: 32px;
-            margin: 24px 0;
-            font-family: 'Consolas', 'Monaco', monospace;
-            font-size: 0.875rem;
-            overflow-x: auto;
-            box-shadow: var(--shadow-md);
-        }
-
-        .schema-box code {
-            color: var(--slate-700);
-            line-height: 1.8;
-        }
-
-        .schema-keyword {
-            color: var(--msft-blue-dark);
-            font-weight: 700;
-        }
-
-        .schema-string {
-            color: var(--foundry-green);
-        }
-
-        .schema-number {
-            color: var(--fabric-orange);
-        }
-
-        /* Architecture Diagram Styles */
-        .arch-diagram {
-            background: var(--bg-secondary);
-            border-radius: 20px;
-            padding: 40px;
-            margin: 32px 0;
-            box-shadow: var(--shadow-lg);
-            border: 1px solid var(--border-light);
-        }
-
-        .arch-layer {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 24px 32px;
-            margin: 16px 0;
-            background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-secondary));
-            border-radius: 12px;
-            border: 2px solid var(--border-light);
-            transition: all var(--transition-base);
-        }
-
-        .arch-layer:hover {
-            border-color: var(--primary);
-            transform: translateX(8px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .arch-layer-name {
-            font-weight: 700;
-            color: var(--slate-900);
-            font-size: 1.125rem;
-        }
-
-        .arch-layer-desc {
-            color: var(--text-secondary);
-            font-size: 0.9375rem;
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 48px 24px;
-            color: var(--slate-400);
-            margin-top: 64px;
-            border-top: 1px solid var(--border-light);
-            background: var(--bg-secondary);
-            border-radius: 24px 24px 0 0;
-        }
-
-        footer p {
-            margin: 8px 0;
-            font-size: 0.9375rem;
-        }
-
-        /* No Results */
-        .no-results {
-            text-align: center;
-            padding: 80px 24px;
-            color: var(--text-secondary);
-            font-size: 1.25rem;
-            display: none;
-            background: var(--bg-secondary);
-            border-radius: 20px;
-            box-shadow: var(--shadow-lg);
-            border: 1px solid var(--border-light);
-        }
-
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .card-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .header-content {
-                flex-direction: column;
-            }
-            
-            .search-container {
-                max-width: 100%;
-            }
-        }
-
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
-            }
-            
-            .container {
-                padding: 24px 16px;
-            }
-            
-            .card {
-                padding: 28px;
-            }
-            
-            .iq-layer {
-                flex-direction: column;
-                padding: 24px;
-            }
-            
-            .iq-number {
-                margin-right: 0;
-                margin-bottom: 16px;
-            }
-            
-            .nav-tabs {
-                padding: 8px;
-            }
-            
-            .nav-tab {
-                padding: 12px 20px;
-                font-size: 0.875rem;
-            }
-        }
-
-        /* Loading Animation */
-        .loading {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 80px;
-        }
-
-        .spinner {
-            width: 48px;
-            height: 48px;
-            border: 4px solid var(--border-medium);
-            border-top-color: var(--primary);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        /* Scroll Progress Indicator */
-        .scroll-progress {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--msft-blue), var(--fabric-orange));
-            z-index: 1000;
-            transition: width var(--transition-fast);
-        }
-
-        /* Back to Top Button */
-        .back-to-top {
-            position: fixed;
-            bottom: 32px;
-            right: 32px;
-            width: 48px;
-            height: 48px;
-            background: var(--primary);
-            color: var(--text-inverse);
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            box-shadow: var(--shadow-lg);
-            opacity: 0;
-            visibility: hidden;
-            transition: all var(--transition-base);
-            z-index: 999;
-            font-size: 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .back-to-top.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .back-to-top:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-xl);
-            background: var(--primary-hover);
+        @media(max-width: 768px) {
+            .header-content { flex-direction: column; }
+            #searchInput { width: 100%; }
+            .card-grid { grid-template-columns: 1fr; }
+            .header-brand h1 { font-size: 1.6rem; }
         }
     </style>
 </head>
 <body>
-    <div class="bg-gradient"></div>
-    <div class="bg-overlay"></div>
-    <div class="scroll-progress" id="scrollProgress"></div>
-    
-    <div class="container">
-        <header>
-            <div class="header-content">
-                <div class="header-title">
-                    <h1>🏛️ Microsoft AI Tour Zürich 2026</h1>
-                    <p class="subtitle">Enterprise Agentic Architecture & Implementation Framework for Higher Education Institutions</p>
-                    <div class="header-meta">
-                        <span class="meta-badge">📍 Zürich, Switzerland</span>
-                        <span class="meta-badge">📅 April 2026</span>
-                        <span class="meta-badge">🎯 EHL Hospitality Business School Reference Architecture</span>
-                    </div>
-                </div>
-                <div class="search-container">
-                    <span class="search-icon">🔍</span>
-                    <input type="text" id="searchInput" placeholder="Search architecture patterns, agents, security controls...">
-                </div>
+<div class="container">
+
+    <!-- HEADER -->
+    <header>
+        <div class="header-content">
+            <div class="header-brand">
+                <h1>🚀 Microsoft AI Tour Zürich 2026</h1>
+                <p class="subtitle">Executive Strategy &amp; Architecture Hub — April 2026</p>
             </div>
-        </header>
-
-        <nav class="nav-tabs">
-            <button class="nav-tab active" data-section="overview">📊 Executive Overview</button>
-            <button class="nav-tab" data-section="iq-stack">🧠 Microsoft IQ Stack</button>
-            <button class="nav-tab" data-section="agents">🤖 Agent Architecture</button>
-            <button class="nav-tab" data-section="security">🔒 Security Framework</button>
-            <button class="nav-tab" data-section="integration">🔌 Integration Patterns</button>
-            <button class="nav-tab" data-section="ehl">🎓 EHL Use Cases</button>
-            <button class="nav-tab" data-section="roadmap">🗺️ Implementation Roadmap</button>
-        </nav>
-
-        <!-- OVERVIEW SECTION -->
-        <section id="overview" class="content-section active">
-            <div class="highlight-box">
-                <h3>🎯 Key Theme: From Experimentation to Frontier Firm</h3>
-                <p>The Microsoft AI Tour Zürich 2026 focused on helping organizations transition from AI experimentation to becoming **Frontier Firms** - enterprises that have successfully operationalized AI at scale with proper governance, security, and measurable ROI.</p>
+            <div class="header-meta">
+                <span class="meta-badge">📍 Zürich, CH</span>
+                <span class="meta-badge">🗓 April 2026</span>
+                <span class="meta-badge">5 Sessions</span>
             </div>
-
-            <div class="card-grid">
-                <div class="card">
-                    <h2>🏗️ Agent Factory Model</h2>
-                    <p>The unified operating and commercial model to scale AI agents across the enterprise. Matches the right platform to the right builder.</p>
-                    <div class="action-item">
-                        <strong>How to Apply:</strong> Implement a "Build AI with AI" approach. Use Agentic DevOps to assign tasks directly from GitHub to Agents. Focus on "Ownerless Agents" for persistent background processes.
-                    </div>
-                </div>
-
-                <div class="card">
-                    <h2>📈 ROI Measurement</h2>
-                    <p>New Engagement Backend and ROI Reports track efficiency gains automatically.</p>
-                    <ul>
-                        <li>Deals Created</li>
-                        <li>Time Saved in CRM Filling</li>
-                        <li>Automated Document Matching</li>
-                        <li>Cost per Group/Tenant</li>
-                    </ul>
-                </div>
-
-                <div class="card">
-                    <h2>🌐 Microsoft Sovereign Cloud</h2>
-                    <p>Options for Sovereign, Private, and National clouds available for highly regulated sectors.</p>
-                    <span class="tag security">Compliance</span>
-                    <span class="tag architecture">Infrastructure</span>
-                </div>
-
-                <div class="card">
-                    <h2>⚛️ Innovation Frontier</h2>
-                    <h3>Majorana 1</h3>
-                    <p>Microsoft's breakthrough quantum computing processor for future accelerated workloads.</p>
-                    <h3>3D Visualization</h3>
-                    <p>Nvidia 3D visualization integrated with Microsoft Fabric data for complex site selection and technical documents.</p>
-                </div>
+            <div class="search-wrap">
+                <input type="text" id="searchInput" placeholder="🔍 Search topics, sessions, concepts...">
             </div>
-        </section>
+        </div>
+    </header>
 
-        <!-- PERSONAS SECTION -->
-        <section id="personas" class="content-section">
-            <h2 style="color: white; margin-bottom: 20px;">👥 Guidance by Role</h2>
-            
-            <div class="filter-buttons">
-                <button class="filter-btn active" data-filter="all">All Roles</button>
-                <button class="filter-btn" data-filter="director">Director of IT</button>
-                <button class="filter-btn" data-filter="security">Cyber Security Director</button>
-                <button class="filter-btn" data-filter="architect">AI Architect</button>
-                <button class="filter-btn" data-filter="project">IT Project Managers</button>
-                <button class="filter-btn" data-filter="cloud">Cloud & Infrastructure</button>
-                <button class="filter-btn" data-filter="data">Data Owners</button>
-            </div>
+    <!-- NAV -->
+    <nav class="nav-tabs">
+        <button class="nav-tab active" data-section="overview">📊 Overview</button>
+        <button class="nav-tab" data-section="iq-stack">🧠 IQ Stack</button>
+        <button class="nav-tab" data-section="agents">🤖 Agents</button>
+        <button class="nav-tab" data-section="security">🔒 Security</button>
+        <button class="nav-tab" data-section="finance">💰 Finance</button>
+        <button class="nav-tab" data-section="education">🎓 Education</button>
+        <button class="nav-tab" data-section="personas">👥 By Role</button>
+        <button class="nav-tab" data-section="roadmap">🗺 Roadmap</button>
+        <button class="nav-tab" data-section="sessions">📋 Sessions</button>
+    </nav>
 
-            <div class="card-grid">
-                <div class="card persona-card" data-persona="director project">
-                    <h2>📋 Director of IT & IT Project Managers</h2>
-                    <span class="tag strategy">Strategy</span>
-                    <span class="tag">ROI</span>
-                    
-                    <h3>Focus Areas</h3>
-                    <ul>
-                        <li>Strategy, ROI, and Operationalization</li>
-                        <li>Move from experimentation to execution</li>
-                        <li>Implement Agent Factory model</li>
-                    </ul>
+    <!-- ═══════════════════════════════════════════════════════ OVERVIEW -->
+    <section id="overview" class="content-section active">
 
-                    <div class="action-item">
-                        <strong>Key Takeaway:</strong> Move from experimentation to execution using the <strong>Agent Factory</strong> model.
-                    </div>
-
-                    <div class="action-item">
-                        <strong>ROI Measurement:</strong> Use the new <strong>Engagement Backend</strong> and <strong>ROI Reports</strong>. Measure success by:
-                        <ul>
-                            <li>Deals Created</li>
-                            <li>Time Saved in CRM Filling</li>
-                            <li>Automated Document Matching</li>
-                        </ul>
-                    </div>
-
-                    <div class="action-item">
-                        <strong>Application:</strong> Implement a "Build AI with AI" approach. Use Agentic DevOps to assign tasks directly from GitHub to Agents. Focus on "Ownerless Agents" for persistent background processes.
-                    </div>
-                </div>
-
-                <div class="card persona-card" data-persona="security data">
-                    <h2>🔒 Cyber Security Director & Data Owners</h2>
-                    <span class="tag security">Security</span>
-                    <span class="tag data">Data</span>
-                    <span class="tag">Compliance</span>
-                    
-                    <h3>Focus Areas</h3>
-                    <ul>
-                        <li>Security, Compliance, and Data Integrity</li>
-                        <li>Zero Trust Architecture</li>
-                        <li>Permission Inheritance</li>
-                    </ul>
-
-                    <div class="action-item">
-                        <strong>Key Takeaway:</strong> AI Security is built on <strong>Zero Trust</strong> and inherits existing Microsoft 365 permissions and <strong>Purview</strong> sensitivity labels.
-                    </div>
-
-                    <h3>Security Tools</h3>
-                    <ul>
-                        <li><strong>Entra Policies:</strong> Detect and block risky agents based on behavioral criteria</li>
-                        <li><strong>Purview AI Dashboard:</strong> View why specific messages or data access attempts were blocked</li>
-                        <li><strong>Agentic Defense:</strong> Deploy "Autonomous Blue Teams" to counter "Ambient Red Teams"</li>
-                    </ul>
-
-                    <div class="action-item">
-                        <strong>Application:</strong> Ensure all data sources (Workday, Oracle, etc.) are connected via secure connectors that respect user-level permissions.
-                    </div>
-                </div>
-
-                <div class="card persona-card" data-persona="architect cloud">
-                    <h2>🏗️ AI Architect, Cloud & Infrastructure</h2>
-                    <span class="tag architecture">Architecture</span>
-                    <span class="tag">Infrastructure</span>
-                    <span class="tag data">Data</span>
-                    
-                    <h3>Focus Areas</h3>
-                    <ul>
-                        <li>Architecture, Integration, and Performance</li>
-                        <li>Microsoft IQ Stack Implementation</li>
-                        <li>System Integration</li>
-                    </ul>
-
-                    <div class="action-item">
-                        <strong>Key Takeaway:</strong> The <strong>Microsoft IQ Stack</strong> provides a unified intelligence layer across the enterprise.
-                    </div>
-
-                    <h3>Architectural Pillars</h3>
-                    <ul>
-                        <li><strong>Foundry IQ:</strong> The knowledge base for RAG (Retrieval-Augmented Generation) using "Agentic Retrieval"</li>
-                        <li><strong>Fabric IQ:</strong> The real-time state of the business (OneLake, Power BI, SQL)</li>
-                        <li><strong>Work IQ:</strong> The context of collaboration (Teams, Outlook, SharePoint)</li>
-                    </ul>
-
-                    <div class="action-item">
-                        <strong>Application:</strong> Utilize the <strong>Model Context Protocol (MCP)</strong> to connect Dynamics 365 and external systems to agents. Explore <strong>Majorana 1</strong> for future quantum-accelerated workloads.
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- IQ STACK SECTION -->
-        <section id="iq-stack" class="content-section">
-            <h2 style="color: white; margin-bottom: 20px;">🧠 The Intelligence Stack (IQ Layers)</h2>
-            
-            <div class="iq-stack-diagram">
-                <p style="margin-bottom: 30px; font-size: 1.1rem;">The "IQ Stack" represents the intelligence outcomes Microsoft wants organizations to achieve. These are not separate SKUs but architectural layers that work together.</p>
-                
-                <div class="iq-layer work">
-                    <div class="iq-number">1</div>
-                    <div class="iq-content">
-                        <h3>Work IQ</h3>
-                        <p><strong>Purpose:</strong> Understands <em>how</em> people work and collaborate</p>
-                        <p><strong>Data Sources:</strong> Teams, Outlook, M365 Documents, Graph API</p>
-                        <p><strong>Use Cases:</strong> Meeting insights, email prioritization, document collaboration, workflow automation</p>
-                    </div>
-                </div>
-
-                <div class="iq-layer fabric">
-                    <div class="iq-number">2</div>
-                    <div class="iq-content">
-                        <h3>Fabric IQ</h3>
-                        <p><strong>Purpose:</strong> Represents the live <em>state</em> and actions of the business</p>
-                        <p><strong>Data Sources:</strong> OneLake, Fabric, Power BI, SQL, Real-time telemetry</p>
-                        <p><strong>Use Cases:</strong> Business intelligence, real-time analytics, operational dashboards, data warehousing</p>
-                    </div>
-                </div>
-
-                <div class="iq-layer foundry">
-                    <div class="iq-number">3</div>
-                    <div class="iq-content">
-                        <h3>Foundry IQ</h3>
-                        <p><strong>Purpose:</strong> Provides curated <em>institutional knowledge</em></p>
-                        <p><strong>Data Sources:</strong> SharePoint, Web, Blob Storage, MCP Servers</p>
-                        <p><strong>Use Cases:</strong> RAG (Retrieval-Augmented Generation), knowledge bases, documentation, best practices</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card-grid">
-                <div class="card">
-                    <h2>🔄 How IQ Layers Work Together</h2>
-                    <p>The three IQ layers create a comprehensive intelligence ecosystem:</p>
-                    <ul>
-                        <li><strong>Work IQ</strong> captures human collaboration patterns</li>
-                        <li><strong>Fabric IQ</strong> provides real-time business state</li>
-                        <li><strong>Foundry IQ</strong> offers institutional knowledge</li>
-                    </ul>
-                    <div class="action-item">
-                        <strong>Implementation Strategy:</strong> Start by mapping your existing data sources to each IQ layer. Ensure proper data governance and access controls are in place before enabling agentic workflows.
-                    </div>
-                </div>
-
-                <div class="card">
-                    <h2>🔌 Model Context Protocol (MCP)</h2>
-                    <p>MCP standardizes how agents interact with external data and systems.</p>
-                    <h3>Supported Integrations</h3>
-                    <ul>
-                        <li>Dynamics 365</li>
-                        <li>Workday</li>
-                        <li>Oracle</li>
-                        <li>Third-party APIs</li>
-                    </ul>
-                    <div class="action-item">
-                        <strong>Best Practice:</strong> Use MCP servers to create standardized interfaces for your agents, ensuring consistent behavior and easier maintenance.
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- AGENTS SECTION -->
-        <section id="agents" class="content-section">
-            <h2 style="color: white; margin-bottom: 20px;">🤖 The Agentic Ecosystem</h2>
-
-            <div class="card-grid">
-                <div class="card">
-                    <h2>🏭 Agent Factory</h2>
-                    <span class="tag strategy">Strategy</span>
-                    <span class="tag architecture">Architecture</span>
-                    
-                    <p>The "supply line" for AI. A unified operating and commercial model to scale AI agents across the enterprise.</p>
-                    
-                    <h3>Key Features</h3>
-                    <ul>
-                        <li>Matches right platform to right builder</li>
-                        <li>Copilot Studio for low-code scenarios</li>
-                        <li>Microsoft Foundry for pro-code development</li>
-                        <li>Standardized deployment pipelines</li>
-                    </ul>
-
-                    <div class="action-item">
-                        <strong>How to Apply:</strong> Establish an Agent Factory in your organization with clear governance policies. Create templates for common agent types and establish review processes for agent deployment.
-                    </div>
-                </div>
-
-                <div class="card">
-                    <h2>🎛️ Agent 365</h2>
-                    <span class="tag security">Governance</span>
-                    <span class="tag">Management</span>
-                    
-                    <p>The <strong>Control Plane</strong> for governance of all AI agents in your organization.</p>
-                    
-                    <h3>Capabilities</h3>
-                    <ul>
-                        <li>Control who can create and deploy agents</li>
-                        <li>Monitor costs per group/tenant</li>
-                        <li>Manage "Ownerless Agents" and background workflows</li>
-                        <li>Manage agents from both Microsoft and third-party providers</li>
-                        <li>ROI tracking and reporting</li>
-                    </ul>
-
-                    <div class="action-item">
-                        <strong>How to Apply:</strong> Implement Agent 365 as your central governance hub. Define policies for agent creation, set budget limits per department, and establish regular review cycles for agent performance.
-                    </div>
-                </div>
-
-                <div class="card">
-                    <h2>🛠️ Copilot Studio & MCP</h2>
-                    <span class="tag architecture">Development</span>
-                    <span class="tag data">Integration</span>
-                    
-                    <h3>Model Context Protocol (MCP)</h3>
-                    <p>Standardizes how agents interact with external data sources like Workday, Oracle, and other enterprise systems.</p>
-                    
-                    <h3>Cowork Feature</h3>
-                    <ul>
-                        <li>Multiple agents run in parallel</li>
-                        <li>"Facilitator" agent acts as third team member</li>
-                        <li>Coordinated task execution</li>
-                        <li>Shared context and state management</li>
-                    </ul>
-
-                    <div class="action-item">
-                        <strong>How to Apply:</strong> Use Copilot Studio for rapid prototyping of agents. Leverage MCP to connect enterprise data sources securely. Implement Cowork patterns for complex multi-agent workflows.
-                    </div>
-                </div>
-
-                <div class="card">
-                    <h2>👻 Ownerless Agents</h2>
-                    <span class="tag architecture">Architecture</span>
-                    <span class="tag">Automation</span>
-                    
-                    <p>Persistent background agents that operate without direct human ownership.</p>
-                    
-                    <h3>Use Cases</h3>
-                    <ul>
-                        <li>Automated monitoring and alerting</li>
-                        <li>Scheduled data processing</li>
-                        <li>Continuous compliance checking</li>
-                        <li>Background workflow orchestration</li>
-                    </ul>
-
-                    <div class="action-item">
-                        <strong>Important:</strong> Ownerless agents still require governance. Define clear escalation paths and monitoring dashboards in Agent 365.
-                    </div>
-                </div>
-            </div>
-
-            <div class="highlight-box">
-                <h3>🚀 Agentic DevOps</h3>
-                <p>Assign tasks directly from GitHub to Agents. This enables:</p>
-                <ul>
-                    <li>Automated code review and analysis</li>
-                    <li>Security vulnerability scanning</li>
-                    <li>Documentation generation</li>
-                    <li>Test case creation and execution</li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- SECURITY SECTION -->
-        <section id="security" class="content-section">
-            <h2 style="color: white; margin-bottom: 20px;">🔒 Security, Governance & Compliance</h2>
-
-            <div class="card-grid">
-                <div class="card">
-                    <h2>🛡️ Secure by Design</h2>
-                    <span class="tag security">Security</span>
-                    <span class="tag">Foundation</span>
-                    
-                    <p>AI and security are now two sides of the same platform.</p>
-                    
-                    <h3>Core Principles</h3>
-                    <ul>
-                        <li><strong>Secure by Design:</strong> Security built into every layer</li>
-                        <li><strong>Secure by Default:</strong> Safe configurations out of the box</li>
-                        <li><strong>Secure Operations:</strong> Continuous monitoring and response</li>
-                    </ul>
-
-                    <div class="action-item">
-                        <strong>Implementation:</strong> Adopt the OWASP Top 10 for ML and Agents. Implement red team exercises for your AI systems.
-                    </div>
-                </div>
-
-                <div class="card">
-                    <h2>🏷️ Confidentiality Inheritance</h2>
-                    <span class="tag security">Compliance</span>
-                    <span class="tag data">Data</span>
-                    
-                    <p>Sensitivity labels from Purview are automatically respected by Copilot and Agents.</p>
-                    
-                    <h3>How It Works</h3>
-                    <ul>
-                        <li>Agents inherit permissions of users</li>
-                        <li>Purview labels control data access</li>
-                        <li>Granular control down to specific messages</li>
-                        <li>Audit trails for all AI interactions</li>
-                    </ul>
-
-                    <div class="action-item">
-                        <strong>Best Practice:</strong> Ensure all sensitive data is properly labeled in Purview before enabling AI features. Test agent behavior with different sensitivity levels.
-                    </div>
-                </div>
-
-                <div class="card">
-                    <h2>🚫 Entra Policies for AI</h2>
-                    <span class="tag security">Security</span>
-                    <span class="tag">Governance</span>
-                    
-                    <p>Detect and block risky agents based on behavioral criteria.</p>
-                    
-                    <h3>Policy Examples</h3>
-                    <ul>
-                        <li>Block agents accessing sensitive data outside business hours</li>
-                        <li>Require approval for agents with external connectivity</li>
-                        <li>Limit token consumption per agent</li>
-                        <li>Detect anomalous agent behavior patterns</li>
-                    </ul>
-                </div>
-
-                <div class="card">
-                    <h2>📊 Purview AI Dashboard</h2>
-                    <span class="tag security">Monitoring</span>
-                    <span class="tag data">Visibility</span>
-                    
-                    <p>View insights on why things got blocked at the data level.</p>
-                    
-                    <h3>Capabilities</h3>
-                    <ul>
-                        <li>Down to specific message-level visibility</li>
-                        <li>Real-time blocking notifications</li>
-                        <li>Trend analysis for security incidents</li>
-                        <li>Compliance reporting</li>
-                    </ul>
-                </div>
-
-                <div class="card">
-                    <h2>⚔️ Agentic Defense</h2>
-                    <span class="tag security">Security</span>
-                    <span class="tag">AI</span>
-                    
-                    <p>Deploy autonomous security teams powered by AI.</p>
-                    
-                    <h3>Components</h3>
-                    <ul>
-                        <li><strong>Ambient Red Team:</strong> Continuously tests your defenses</li>
-                        <li><strong>Autonomous Blue Team:</strong> Responds to threats in real-time</li>
-                        <li><strong>Sentinel Playbook Generator:</strong> Creates automated response playbooks</li>
-                        <li><strong>Sentinel Data Federation:</strong> Unified security data view</li>
-                    </ul>
-
-                    <div class="action-item">
-                        <strong>Scale:</strong> Microsoft Security processes 100 trillion signals a day across Copilot, Defender, and Purview.
-                    </div>
-                </div>
-
-                <div class="card">
-                    <h2>🔍 Shadow IT Detection</h2>
-                    <span class="tag security">Governance</span>
-                    <span class="tag">Discovery</span>
-                    
-                    <p>Enhanced app discovery to detect unauthorized AI tools.</p>
-                    
-                    <h3>Features</h3>
-                    <ul>
-                        <li>Automatic detection of AI apps in use</li>
-                        <li>Risk scoring for discovered apps</li>
-                        <li>Integration with App Governance</li>
-                        <li>Remediation workflows</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="highlight-box">
-                <h3>🌐 Zero Trust for AI</h3>
-                <p>All AI security is built on Zero Trust principles:</p>
-                <ul>
-                    <li>Verify explicitly - Always authenticate and authorize</li>
-                    <li>Use least privilege access - Limit user and agent permissions</li>
-                    <li>Assume breach - Minimize blast radius and segment access</li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- FINANCE SECTION -->
-        <section id="finance" class="content-section">
-            <h2 style="color: white; margin-bottom: 20px;">💰 Industry Spotlight: Financial Services</h2>
-            <p style="color: white; margin-bottom: 30px; font-size: 1.1rem;">Session BRK202-CH: Pioneering the Future of Financial Services with AI</p>
-
-            <div class="card-grid">
-                <div class="card">
-                    <h2>🏦 LGT</h2>
-                    <span class="tag">Banking</span>
-                    <span class="tag data">Automation</span>
-                    
-                    <p><strong>Speaker:</strong> Head of Business and Innovation</p>
-                    
-                    <h3>Transformation Journey</h3>
-                    <ul>
-                        <li>5-year long transformation program</li>
-                        <li>Recording customer conversations</li>
-                        <li>Automatic CRM filling from calls</li>
-                        <li>Reduced manual data entry</li>
-                    </ul>
-
-                    <div class="action-item">
-                        <strong>Business Case:</strong> Significant time savings in post-call documentation, improved data accuracy, and better customer experience.
-                    </div>
-                </div>
-
-                <div class="card">
-                    <h2>🏛️ Migros Bank</h2>
-                    <span class="tag">Banking</span>
-                    <span class="tag">OCR</span>
-                    <span class="tag">Automation</span>
-                    
-                    <p><strong>Speaker:</strong> Head of Data Automation and AI</p>
-                    
-                    <h3>Focus Areas</h3>
-                    <ul>
-                        <li>Incoming documents processing</li>
-                        <li>Efficiency gains in OCR AI recognition</li>
-                        <li>Avoid repetitive manual tasks</li>
-                        <li>Change roles of people strategically</li>
-                    </ul>
-
-                    <div class="action-item">
-                        <strong>Key Insight:</strong> An accountant should focus on higher-value tasks than matching and handling documents. Move people to curating data instead of firing them.
-                    </div>
-
-                    <h3>Lessons Learned</h3>
-                    <ul>
-                        <li>No agentic AI without understanding the topic</li>
-                        <li>Risk Management must be in place</li>
-                        <li>Human-in-the-loop for critical decisions</li>
-                        <li>Open to all models with proper governance</li>
-                        <li>Policy framework is essential</li>
-                    </ul>
-                </div>
-
-                <div class="card">
-                    <h2>🛡️ Vaudois Assurances</h2>
-                    <span class="tag">Insurance</span>
-                    <span class="tag security">Compliance</span>
-                    
-                    <p><strong>Speaker:</strong> CFO</p>
-                    
-                    <h3>Key Priorities</h3>
-                    <ul>
-                        <li>FINMA regulatory compliance</li>
-                        <li>Employee training programs</li>
-                        <li>Guardrails for AI usage</li>
-                        <li>Risk management frameworks</li>
-                    </ul>
-
-                    <div class="action-item">
-                        <strong>Approach:</strong> Nothing special needed - focus on proper training, clear policies, and maintaining human oversight.
-                    </div>
-                </div>
-
-                <div class="card">
-                    <h2>📋 Common Themes in Financial Services</h2>
-                    <span class="tag security">Regulation</span>
-                    <span class="tag">Best Practices</span>
-                    
-                    <h3>Critical Success Factors</h3>
-                    <ul>
-                        <li><strong>Human-in-the-Loop:</strong> Essential for high-risk decisions</li>
-                        <li><strong>Governance First:</strong> Policy framework before deployment</li>
-                        <li><strong>Training:</strong> Employees must understand AI capabilities and limitations</li>
-                        <li><strong>Transparency:</strong> Open about AI usage with customers and regulators</li>
-                        <li><strong>Gradual Rollout:</strong> Start with low-risk scenarios, build confidence</li>
-                        <li><strong>Role Evolution:</strong> Reskill rather than replace employees</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="highlight-box">
-                <h3>⚖️ FINMA Compliance Considerations</h3>
-                <p>For Swiss financial institutions, FINMA regulations require:</p>
-                <ul>
-                    <li>Clear accountability for AI-driven decisions</li>
-                    <li>Documented risk assessment processes</li>
-                    <li>Audit trails for all automated processes</li>
-                    <li>Human oversight for critical functions</li>
-                    <li>Data protection and privacy compliance</li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- SESSIONS SECTION -->
-        <section id="sessions" class="content-section">
-            <h2 style="color: white; margin-bottom: 20px;">📋 Session Index</h2>
-
-            <div class="card-grid">
-                <div class="card">
-                    <span class="session-badge">LTG122-CH</span>
-                    <h2>Copilot Control System</h2>
-                    <h3>Secure, Manage, and Measure AI</h3>
-                    
-                    <p>Learn how to implement comprehensive governance for your AI initiatives.</p>
-                    
-                    <h3>Key Topics</h3>
-                    <ul>
-                        <li>Purview & Copilot security inheritance</li>
-                        <li>AI Admin controls for agents and costs</li>
-                        <li>Group-based permissions in tenant</li>
-                        <li>Workday and Oracle integration</li>
-                        <li>ROI Reports based on deals created</li>
-                    </ul>
-                </div>
-
-                <div class="card">
-                    <span class="session-badge">BRK202-CH</span>
-                    <h2>Financial Services AI</h2>
-                    <h3>Pioneering the Future with AI</h3>
-                    
-                    <p>Real-world case studies from leading financial institutions.</p>
-                    
-                    <h3>Featured Companies</h3>
-                    <ul>
-                        <li>LGT - 5-year transformation journey</li>
-                        <li>Migros Bank - Document automation</li>
-                        <li>Vaudois - Compliance and governance</li>
-                    </ul>
-                </div>
-
-                <div class="card">
-                    <span class="session-badge">BRK320-CH</span>
-                    <h2>Becoming a Frontier Firm</h2>
-                    <h3>Copilot + Agents at Scale</h3>
-                    
-                    <p>Transform your organization into an AI-first enterprise.</p>
-                    
-                    <h3>Key Concepts</h3>
-                    <ul>
-                        <li>Microsoft IQ (Work IQ, Teams IQ, Foundry IQ)</li>
-                        <li>Rules and workflows automation</li>
-                        <li>Fabric IQ - state and actions of business</li>
-                        <li>Data agent implementation</li>
-                        <li>Agent 365 and Agent Factory</li>
-                        <li>Confidentiality labels in M365</li>
-                        <li>Graph API and fine-grained permissions</li>
-                    </ul>
-                </div>
-
-                <div class="card">
-                    <span class="session-badge">BRK340-CH</span>
-                    <h2>Driving Business Innovation</h2>
-                    <h3>AI Apps and Agents</h3>
-                    
-                    <p>Practical applications of AI across industries.</p>
-                    
-                    <h3>Highlights</h3>
-                    <ul>
-                        <li>Work IQ: Data, context, skills and tools</li>
-                        <li>Multiple runs in parallel</li>
-                        <li>Cowork (agent) facilitator concept</li>
-                        <li>Restricted data per source</li>
-                        <li>Technical documents for energy sector</li>
-                        <li>Agentic DevOps from GitHub</li>
-                        <li>Building AI with AI</li>
-                        <li>Microsoft Foundry Agent Service</li>
-                        <li>On-premise options for security</li>
-                        <li>11k+ agents available</li>
-                    </ul>
-                </div>
-
-                <div class="card">
-                    <span class="session-badge">BRK380-CH</span>
-                    <h2>End-to-End Security</h2>
-                    <h3>In the Age of Agentic AI</h3>
-                    
-                    <p>Comprehensive security strategies for AI deployments.</p>
-                    
-                    <h3>Security Framework</h3>
-                    <ul>
-                        <li>Secure by design, default, and operations</li>
-                        <li>Red team (ambient) vs Blue team (autonomous)</li>
-                        <li>Agentic defense strategies</li>
-                        <li>100 trillion signals/day processing</li>
-                        <li>OWASP Top 10 for ML and Agents</li>
-                        <li>Agents 365 controls (including non-MS)</li>
-                        <li>Zero Trust architecture</li>
-                        <li>Entra policies for risky agents</li>
-                        <li>Purview insights and blocking</li>
-                        <li>Shadow IT detection</li>
-                        <li>Sentinel playbook generator</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <div class="no-results" id="noResults">
-            <h3>No results found</h3>
-            <p>Try adjusting your search terms or browse through the sections above.</p>
+        <div class="highlight-box">
+            <h3>🎯 Central Theme: From Experimentation to Frontier Firm</h3>
+            <p>Microsoft AI Tour Zürich 2026 challenged organizations to stop piloting AI and start <strong>operationalizing it at enterprise scale</strong>. A <em>Frontier Firm</em> has proper governance, measurable ROI, and AI woven into every business process — not bolted on the side.</p>
         </div>
 
-        <footer>
-            <p>Generated based on Microsoft AI Tour Zürich - April 2026 Findings</p>
-            <p>For internal use and strategic planning purposes</p>
-        </footer>
+        <div class="card-grid">
+            <div class="card">
+                <h2>🏭 Agent Factory</h2>
+                <p>The unified operating and commercial model to scale AI agents across the enterprise. Matches the right platform to the right builder.</p>
+                <div class="action-item">
+                    <strong>Apply:</strong> Use "Build AI with AI" — assign tasks from GitHub directly to agents via Agentic DevOps. Deploy Ownerless Agents for persistent background processes.
+                </div>
+            </div>
+            <div class="card green-accent">
+                <h2>📈 ROI Measurement</h2>
+                <p>The new Engagement Backend and ROI Reports track efficiency gains automatically across every Copilot interaction.</p>
+                <ul>
+                    <li>Deals Created</li>
+                    <li>Time Saved in CRM Filling</li>
+                    <li>Automated Document Matching</li>
+                    <li>Cost per Group / Tenant</li>
+                </ul>
+            </div>
+            <div class="card slate-accent">
+                <h2>🌐 Sovereign Cloud Options</h2>
+                <p>Microsoft offers Sovereign, Private, and National Cloud configurations for highly regulated sectors such as financial services, insurance, and government.</p>
+                <span class="tag security">Compliance</span>
+                <span class="tag arch">Infrastructure</span>
+            </div>
+            <div class="card orange-accent">
+                <h2>⚛️ Innovation Frontier</h2>
+                <h3>Majorana 1 Quantum Processor</h3>
+                <p>Microsoft's breakthrough quantum chip, designed for future accelerated workloads not feasible on classical silicon.</p>
+                <h3>3D Visualization</h3>
+                <p>Nvidia 3D visualization integrated with Microsoft Fabric for site selection, energy planning, and complex technical documents.</p>
+                <span class="tag quantum">Quantum</span>
+            </div>
+        </div>
+
+        <div class="mermaid-wrap">
+            <h3>📐 Microsoft AI Platform Architecture</h3>
+            <div class="mermaid">
+flowchart TD
+    A(["👤 End User / Agent"]) --> B["Work IQ\nTeams · Outlook · SharePoint"]
+    A --> C["Fabric IQ\nOneLake · Power BI · SQL"]
+    A --> D["Foundry IQ\nRAG · Knowledge · MCP"]
+    B --> E(["Microsoft 365 Copilot"])
+    C --> E
+    D --> E
+    E --> F["Agent Factory"]
+    F --> G["Agent 365 (Control Plane)"]
+    G --> H["Copilot Studio"]
+    G --> I["Microsoft Foundry"]
+    G --> J["Ownerless Agents"]
+    F --> K["Agentic DevOps\n(GitHub → Agent)"]
+    style E fill:#0078D4,color:#fff
+    style F fill:#243A5E,color:#fff
+    style G fill:#107C10,color:#fff
+            </div>
+        </div>
+
+        <div class="card-grid">
+            <div class="card">
+                <h2>🔑 Key Stats</h2>
+                <table>
+                    <tr><th>Metric</th><th>Value</th></tr>
+                    <tr><td>Security Signals / Day</td><td>100 Trillion</td></tr>
+                    <tr><td>Agents Available in Ecosystem</td><td>11,000+</td></tr>
+                    <tr><td>IQ Stack Layers</td><td>3 (Work, Fabric, Foundry)</td></tr>
+                    <tr><td>Featured Industry Case Studies</td><td>3 Swiss companies</td></tr>
+                    <tr><td>Sessions Attended</td><td>5</td></tr>
+                </table>
+            </div>
+            <div class="card green-accent">
+                <h2>✅ Immediate Next Steps</h2>
+                <ul>
+                    <li>Map existing data sources to IQ Stack layers</li>
+                    <li>Audit Purview sensitivity labels across M365</li>
+                    <li>Pilot Agent Factory model in one department</li>
+                    <li>Enable Agent 365 governance dashboard</li>
+                    <li>Define an AI ROI measurement framework</li>
+                    <li>Explore MCP connectors for Dynamics 365</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════ IQ STACK -->
+    <section id="iq-stack" class="content-section">
+        <h2 class="section-title">🧠 The Intelligence Stack (IQ Layers)</h2>
+
+        <div class="iq-stack-diagram">
+            <p style="margin-bottom: 24px; font-size: 1.05rem; color: var(--text-secondary);">The IQ Stack represents the intelligence outcomes Microsoft delivers. These are <strong>not separate SKUs</strong> — they are architectural layers that compound in value when used together.</p>
+
+            <div class="iq-layer work">
+                <div class="iq-number">1</div>
+                <div>
+                    <h3 style="color:#0078D4">Work IQ — Collaboration Intelligence</h3>
+                    <p><strong>Purpose:</strong> Understands <em>how</em> people work and collaborate</p>
+                    <p><strong>Sources:</strong> Teams, Outlook, M365 Documents, Graph API, Calendar, Viva Insights</p>
+                    <p><strong>Use Cases:</strong> Meeting insights, email triage, document co-authoring, workflow triggers, People analytics</p>
+                </div>
+            </div>
+
+            <div class="iq-layer fabric">
+                <div class="iq-number">2</div>
+                <div>
+                    <h3 style="color:#F25022">Fabric IQ — Business State Intelligence</h3>
+                    <p><strong>Purpose:</strong> Represents the live <em>state and actions</em> of the business</p>
+                    <p><strong>Sources:</strong> OneLake, Microsoft Fabric, Power BI, SQL, Real-time telemetry, Dynamics 365</p>
+                    <p><strong>Use Cases:</strong> Real-time BI, operational dashboards, data agents, predictive analytics, data pipelines</p>
+                </div>
+            </div>
+
+            <div class="iq-layer foundry">
+                <div class="iq-number">3</div>
+                <div>
+                    <h3 style="color:#7FBA00">Foundry IQ — Institutional Knowledge</h3>
+                    <p><strong>Purpose:</strong> Provides curated <em>institutional knowledge</em> via Agentic Retrieval (RAG)</p>
+                    <p><strong>Sources:</strong> SharePoint, Web, Blob Storage, MCP Servers, External APIs</p>
+                    <p><strong>Use Cases:</strong> Knowledge bases, policy retrieval, documentation search, best-practice agents, compliance guides</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mermaid-wrap">
+            <h3>📡 IQ Stack Data Flow</h3>
+            <div class="mermaid">
+sequenceDiagram
+    participant U as User / Agent
+    participant W as Work IQ
+    participant F as Fabric IQ
+    participant FO as Foundry IQ
+    participant C as Copilot Engine
+    U->>C: Natural Language Query
+    C->>W: Fetch collaboration context
+    C->>F: Fetch business state data
+    C->>FO: Retrieve institutional knowledge (RAG)
+    W-->>C: Teams / Outlook context
+    F-->>C: Live metrics + dashboards
+    FO-->>C: Policy docs + best practices
+    C-->>U: Grounded, contextual response
+            </div>
+        </div>
+
+        <div class="card-grid">
+            <div class="card">
+                <h2>🔌 Model Context Protocol (MCP)</h2>
+                <p>MCP standardizes how agents interact with external data sources, creating a universal connector layer.</p>
+                <h3>Supported Integrations</h3>
+                <ul>
+                    <li>Dynamics 365 (Finance &amp; Operations, CRM)</li>
+                    <li>Workday (HR, Payroll)</li>
+                    <li>Oracle (ERP, DB)</li>
+                    <li>SAP</li>
+                    <li>Custom REST / GraphQL APIs</li>
+                </ul>
+                <div class="action-item">
+                    <strong>Best Practice:</strong> Build MCP servers as thin adapters — don't embed business logic. Keep them stateless and versioned.
+                </div>
+            </div>
+            <div class="card">
+                <h2>💻 MCP Server Example</h2>
+                <div class="code-block"><span class="cmt">// Example: MCP server for Dynamics 365 F&amp;O</span>
+<span class="kw">export</span> <span class="kw">const</span> dynamics365Tool = {
+  name: <span class="str">"get_vendor_invoices"</span>,
+  description: <span class="str">"Retrieve open vendor invoices"</span>,
+  parameters: {
+    vendorId: { type: <span class="str">"string"</span>, required: <span class="kw">true</span> },
+    status:   { type: <span class="str">"string"</span>, enum: [<span class="str">"Open"</span>,<span class="str">"Posted"</span>] }
+  },
+  handler: <span class="kw">async</span> ({ vendorId, status }) =&gt; {
+    <span class="cmt">// Respects user-level D365 permissions</span>
+    <span class="kw">return</span> <span class="kw">await</span> d365Client.invoices.list({ vendorId, status });
+  }
+};</div>
+            </div>
+            <div class="card">
+                <h2>🔑 Graph API Permissions</h2>
+                <p>Fine-grained Graph API permissions control exactly what each agent can access — no over-privileging.</p>
+                <div class="code-block"><span class="cmt">// Minimal-privilege Graph scopes for a Meeting Agent</span>
+{
+  <span class="str">"scopes"</span>: [
+    <span class="str">"Calendars.Read"</span>,
+    <span class="str">"OnlineMeetings.Read"</span>,
+    <span class="str">"MailboxSettings.Read"</span>
+  ],
+  <span class="str">"excludedScopes"</span>: [
+    <span class="str">"Mail.ReadWrite"</span>,
+    <span class="str">"Files.ReadWrite.All"</span>
+  ]
+}</div>
+            </div>
+            <div class="card green-accent">
+                <h2>🏗️ Implementation Strategy</h2>
+                <ul>
+                    <li>Start by mapping existing data sources to IQ layers</li>
+                    <li>Ensure Purview labels are applied before enabling agents</li>
+                    <li>Use Foundry IQ for low-risk RAG pilots first</li>
+                    <li>Expand to Fabric IQ for operational use cases</li>
+                    <li>Enable Work IQ for collaboration intelligence last</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════ AGENTS -->
+    <section id="agents" class="content-section">
+        <h2 class="section-title">🤖 The Agentic Ecosystem</h2>
+
+        <div class="mermaid-wrap">
+            <h3>🏭 Agent Factory Operating Model</h3>
+            <div class="mermaid">
+flowchart LR
+    subgraph Builders
+        B1["Citizen Builder\n(Low-code)"]
+        B2["Pro Developer\n(Pro-code)"]
+        B3["Data Scientist\n(ML / Fine-tune)"]
+    end
+    subgraph Platforms
+        P1["Copilot Studio"]
+        P2["Microsoft Foundry"]
+        P3["Azure AI Studio"]
+    end
+    subgraph Governance
+        G1["Agent 365\nControl Plane"]
+        G2["Purview Labels"]
+        G3["Entra Policies"]
+    end
+    B1 --> P1
+    B2 --> P2
+    B3 --> P3
+    P1 --> G1
+    P2 --> G1
+    P3 --> G1
+    G1 --> G2
+    G1 --> G3
+    style G1 fill:#107C10,color:#fff
+            </div>
+        </div>
+
+        <div class="card-grid">
+            <div class="card">
+                <h2>🏭 Agent Factory</h2>
+                <span class="tag strategy">Strategy</span>
+                <span class="tag arch">Platform</span>
+                <p>The "supply line" for AI. A unified operating and commercial model matching the right builder to the right platform.</p>
+                <h3>Platforms by Skill Level</h3>
+                <ul>
+                    <li><strong>Copilot Studio</strong> — Low-code, no-code builders</li>
+                    <li><strong>Microsoft Foundry</strong> — Pro-code, enterprise agents</li>
+                    <li><strong>Azure AI Studio</strong> — ML engineers, fine-tuning</li>
+                </ul>
+                <div class="action-item">
+                    <strong>Apply:</strong> Define builder tiers in your org. Create agent templates for common scenarios and establish an agent review board.
+                </div>
+            </div>
+
+            <div class="card green-accent">
+                <h2>🎛️ Agent 365 — Control Plane</h2>
+                <span class="tag security">Governance</span>
+                <span class="tag">Management</span>
+                <p>Centralized governance for <strong>all</strong> AI agents — Microsoft and third-party.</p>
+                <h3>Capabilities</h3>
+                <ul>
+                    <li>Control who can create and deploy agents</li>
+                    <li>Monitor costs per group / tenant</li>
+                    <li>Manage Ownerless Agents and background workflows</li>
+                    <li>ROI tracking and reporting dashboards</li>
+                    <li>Third-party agent integration (11,000+ available)</li>
+                </ul>
+                <div class="action-item">
+                    <strong>Apply:</strong> Set budget limits per department. Establish quarterly agent performance reviews.
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>🛠️ Copilot Studio + MCP</h2>
+                <span class="tag arch">Dev</span>
+                <span class="tag data">Integration</span>
+                <h3>Cowork (Multi-Agent) Pattern</h3>
+                <ul>
+                    <li>Multiple agents run in parallel on shared context</li>
+                    <li>A "Facilitator" agent acts as orchestrator</li>
+                    <li>Coordinated task execution with shared state</li>
+                </ul>
+                <div class="code-block"><span class="cmt"># Cowork pattern pseudocode</span>
+<span class="kw">orchestrator</span>.run(
+  agents=[research_agent, writer_agent],
+  context=shared_workspace,
+  facilitator=coordinator_agent
+)</div>
+            </div>
+
+            <div class="card orange-accent">
+                <h2>👻 Ownerless Agents</h2>
+                <span class="tag arch">Architecture</span>
+                <p>Persistent background agents without direct human ownership. They run continuously, governed by Agent 365 policies.</p>
+                <h3>Use Cases</h3>
+                <ul>
+                    <li>Automated monitoring and alerting</li>
+                    <li>Scheduled data pipeline orchestration</li>
+                    <li>Continuous compliance checking</li>
+                    <li>Background invoice and document processing</li>
+                </ul>
+                <div class="action-item">
+                    <strong>Important:</strong> Ownerless ≠ ungoverned. Define escalation paths and set hard budget caps in Agent 365.
+                </div>
+            </div>
+        </div>
+
+        <div class="highlight-box">
+            <h3>⚙️ Agentic DevOps — Build AI with AI</h3>
+            <p>Assign tasks directly from <strong>GitHub Issues to Agents</strong>. This closes the loop between development workflows and AI assistance:</p>
+            <ul>
+                <li>Automated code review and security scanning</li>
+                <li>Documentation generation from PRs</li>
+                <li>Test case creation and execution</li>
+                <li>Dependency and vulnerability analysis</li>
+                <li>Agents that self-improve based on CI/CD feedback</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════ SECURITY -->
+    <section id="security" class="content-section">
+        <h2 class="section-title">🔒 Security, Governance &amp; Compliance</h2>
+
+        <div class="mermaid-wrap">
+            <h3>🛡️ Zero Trust AI Security Model</h3>
+            <div class="mermaid">
+flowchart TD
+    A["Agent Request"] --> B{"Entra Identity Check"}
+    B -->|"Risky / Unknown"| C["Block + Alert"]
+    B -->|"Verified"| D{"Purview Label Check"}
+    D -->|"Sensitivity > User Clearance"| E["Block + Audit Log"]
+    D -->|"Permitted"| F{"Least Privilege Scope"}
+    F --> G["Execute Action"]
+    G --> H["Purview AI Dashboard Log"]
+    H --> I["Sentinel SIEM"]
+    style C fill:#D13438,color:#fff
+    style E fill:#D13438,color:#fff
+    style G fill:#107C10,color:#fff
+            </div>
+        </div>
+
+        <div class="card-grid">
+            <div class="card">
+                <h2>🛡️ Secure by Design</h2>
+                <span class="tag security">Core</span>
+                <p>Security is built into every layer of the Microsoft AI platform — not an add-on.</p>
+                <h3>Three Principles</h3>
+                <ul>
+                    <li><strong>Secure by Design:</strong> Security at every architectural layer</li>
+                    <li><strong>Secure by Default:</strong> Safe configurations out-of-the-box</li>
+                    <li><strong>Secure Operations:</strong> Continuous monitoring and automated response</li>
+                </ul>
+                <div class="action-item">
+                    <strong>Apply:</strong> Run OWASP Top 10 for ML and Agents review. Schedule AI red-team exercises quarterly.
+                </div>
+            </div>
+
+            <div class="card red-accent">
+                <h2>🏷️ Confidentiality Inheritance</h2>
+                <span class="tag security">Compliance</span>
+                <span class="tag data">Data</span>
+                <p>Purview sensitivity labels are <strong>automatically respected</strong> by Copilot and all agents — no code needed.</p>
+                <ul>
+                    <li>Agents inherit the permissions of the triggering user</li>
+                    <li>Labels control data access down to individual message level</li>
+                    <li>Full audit trail for every AI interaction</li>
+                </ul>
+                <div class="action-item">
+                    <strong>Best Practice:</strong> Label all data in Purview before enabling AI agents. Test with each sensitivity tier.
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>🚫 Entra Policies for AI</h2>
+                <span class="tag security">Governance</span>
+                <p>Behavioral policy engine that detects and blocks risky agents in real time.</p>
+                <h3>Example Policies</h3>
+                <ul>
+                    <li>Block agents accessing sensitive data outside business hours</li>
+                    <li>Require human approval for agents with external connectivity</li>
+                    <li>Limit token consumption per agent per hour</li>
+                    <li>Alert on anomalous query volume patterns</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>📊 Purview AI Dashboard</h2>
+                <span class="tag security">Monitoring</span>
+                <p>Granular visibility into why specific data access was blocked, down to the individual message level.</p>
+                <ul>
+                    <li>Real-time blocking notifications</li>
+                    <li>Trend analysis for compliance incidents</li>
+                    <li>Exportable compliance reports</li>
+                    <li>Integration with Sentinel SIEM</li>
+                </ul>
+            </div>
+
+            <div class="card red-accent">
+                <h2>⚔️ Agentic Defense</h2>
+                <span class="tag security">AI Security</span>
+                <p>Deploy autonomous AI security teams to defend against AI-powered attacks.</p>
+                <ul>
+                    <li><strong>Ambient Red Team:</strong> Continuously probes your defenses</li>
+                    <li><strong>Autonomous Blue Team:</strong> Responds to threats in real-time</li>
+                    <li><strong>Sentinel Playbook Generator:</strong> Auto-creates response playbooks</li>
+                    <li><strong>Sentinel Data Federation:</strong> Unified security data lake</li>
+                </ul>
+                <div class="action-item">
+                    <strong>Scale:</strong> Microsoft processes <strong>100 trillion signals/day</strong> across Copilot, Defender, and Purview.
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>🔍 Shadow AI Detection</h2>
+                <span class="tag security">Discovery</span>
+                <p>Enhanced app discovery now covers unauthorized AI tools — not just traditional shadow IT.</p>
+                <ul>
+                    <li>Automatic detection of AI SaaS in use</li>
+                    <li>Risk scoring for discovered apps</li>
+                    <li>Integration with App Governance policies</li>
+                    <li>Automated remediation workflows</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="highlight-box">
+            <h3>🌐 Zero Trust for AI — Core Principles</h3>
+            <ul>
+                <li><strong>Verify Explicitly:</strong> Always authenticate and authorize — every request, every agent</li>
+                <li><strong>Use Least Privilege:</strong> Grant minimum permissions required. Never use global admin for agents</li>
+                <li><strong>Assume Breach:</strong> Minimise blast radius, segment access, monitor continuously</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════ FINANCE -->
+    <section id="finance" class="content-section">
+        <h2 class="section-title">💰 Industry Spotlight: Financial Services</h2>
+        <p class="section-subtitle">Session BRK202-CH — Pioneering the Future of Financial Services with AI</p>
+
+        <div class="card-grid">
+            <div class="card">
+                <h2>🏦 LGT Bank</h2>
+                <span class="tag">Private Banking</span>
+                <span class="tag data">Automation</span>
+                <p><strong>Speaker:</strong> Head of Business and Innovation</p>
+                <h3>5-Year Transformation Journey</h3>
+                <ul>
+                    <li>Recording and transcribing all customer calls</li>
+                    <li>Automatic CRM population from call transcripts</li>
+                    <li>Significant reduction in post-call documentation time</li>
+                    <li>Improved data accuracy across the CRM</li>
+                </ul>
+                <div class="action-item">
+                    <strong>ROI:</strong> Measurable time savings in CRM filling; improved advisor focus on client relationships rather than admin.
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>🏛️ Migros Bank</h2>
+                <span class="tag">Retail Banking</span>
+                <span class="tag">OCR</span>
+                <span class="tag data">Automation</span>
+                <p><strong>Speaker:</strong> Head of Data Automation and AI</p>
+                <h3>Document Intelligence Pipeline</h3>
+                <ul>
+                    <li>OCR + AI recognition for incoming documents</li>
+                    <li>Automated matching against ledger entries</li>
+                    <li>Eliminated repetitive manual reconciliation tasks</li>
+                    <li>Reskilled accountants to data curation roles</li>
+                </ul>
+                <h3>Lessons Learned</h3>
+                <ul>
+                    <li>No agentic AI without deep domain understanding first</li>
+                    <li>Risk management framework must precede deployment</li>
+                    <li>Human-in-the-loop for all critical financial decisions</li>
+                    <li>Governance policy framework is non-negotiable</li>
+                    <li>Open to multiple models — avoid vendor lock-in</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>🛡️ Vaudois Assurances</h2>
+                <span class="tag">Insurance</span>
+                <span class="tag security">Compliance</span>
+                <p><strong>Speaker:</strong> CFO</p>
+                <h3>Key Priorities</h3>
+                <ul>
+                    <li>FINMA regulatory compliance as a hard requirement</li>
+                    <li>Company-wide AI training programmes</li>
+                    <li>Clear guardrails for permissible AI usage</li>
+                    <li>Documented risk management frameworks</li>
+                </ul>
+                <div class="action-item">
+                    <strong>Approach:</strong> "Nothing exotic needed" — disciplined training, clear policies, and maintained human oversight deliver results.
+                </div>
+            </div>
+
+            <div class="card slate-accent">
+                <h2>📋 Financial Services: Common Themes</h2>
+                <span class="tag security">Regulation</span>
+                <h3>Critical Success Factors</h3>
+                <ul>
+                    <li><strong>Human-in-the-Loop:</strong> Essential for high-stakes decisions</li>
+                    <li><strong>Governance First:</strong> Policy framework before deployment</li>
+                    <li><strong>Training:</strong> Employees must understand AI capabilities AND limitations</li>
+                    <li><strong>Transparency:</strong> Open communication with customers and regulators</li>
+                    <li><strong>Gradual Rollout:</strong> Low-risk pilots first, build institutional confidence</li>
+                    <li><strong>Role Evolution:</strong> Reskill rather than replace employees</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="highlight-box">
+            <h3>⚖️ FINMA Compliance Considerations</h3>
+            <p>For Swiss financial institutions, FINMA requires AI governance to cover:</p>
+            <ul>
+                <li>Clear individual accountability for AI-driven decisions</li>
+                <li>Documented risk assessment processes for each AI use case</li>
+                <li>Full audit trails for all automated financial processes</li>
+                <li>Human oversight mechanisms for critical functions</li>
+                <li>Data protection and GDPR / nFADP privacy compliance</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════ EDUCATION -->
+    <section id="education" class="content-section">
+        <h2 class="section-title">🎓 Higher Education: AI Transformation</h2>
+        <p class="section-subtitle">Applying Microsoft AI Tour insights to academic and higher-education institutions</p>
+
+        <div class="mermaid-wrap">
+            <h3>🏫 Higher Education AI Architecture (e.g. EHL / University)</h3>
+            <div class="mermaid">
+flowchart TD
+    subgraph StudentJourney
+        S1["Prospective Student"] --> S2["Application Agent"]
+        S2 --> S3["Admissions CRM\n(Dynamics 365)"]
+        S3 --> S4["Enrolled Student"]
+        S4 --> S5["Learning Agent\n(Course Support)"]
+        S4 --> S6["Career Agent\n(Alumni Network)"]
+    end
+    subgraph DataPlatform
+        D1["Work IQ\nTeams Classes"]
+        D2["Fabric IQ\nStudent SIS / Finance"]
+        D3["Foundry IQ\nCourse Library / Policies"]
+    end
+    subgraph Governance
+        G1["Agent 365"]
+        G2["Purview (GDPR)"]
+    end
+    S5 --> D1
+    S5 --> D3
+    S6 --> D2
+    D1 --> G1
+    D2 --> G1
+    D3 --> G1
+    G1 --> G2
+    style G2 fill:#D13438,color:#fff
+    style G1 fill:#107C10,color:#fff
+            </div>
+        </div>
+
+        <div class="card-grid">
+            <div class="card">
+                <h2>📚 Academic Use Cases</h2>
+                <span class="tag edu">Education</span>
+                <span class="tag arch">Architecture</span>
+                <ul>
+                    <li><strong>Admissions Agent:</strong> Qualify and respond to prospective student enquiries 24/7</li>
+                    <li><strong>Course Support Agent:</strong> Answer syllabus, deadline, and policy questions</li>
+                    <li><strong>Research Agent:</strong> RAG over institutional publications and datasets</li>
+                    <li><strong>Faculty Admin Agent:</strong> Automate scheduling, grading reminders, reporting</li>
+                    <li><strong>Alumni Career Agent:</strong> Connect students with alumni and job listings</li>
+                </ul>
+            </div>
+
+            <div class="card green-accent">
+                <h2>🔌 System Integration</h2>
+                <span class="tag edu">SIS</span>
+                <span class="tag data">Integration</span>
+                <p>Connecting Student Information Systems (SIS) and payment platforms via MCP.</p>
+                <ul>
+                    <li>Dynamics 365 as Student CRM and Finance backbone</li>
+                    <li>MCP connectors for legacy SIS (e.g. Banner, Peoplesoft)</li>
+                    <li>Payment gateway integration (Stripe, PostFinance) via secure connectors</li>
+                    <li>SharePoint as Foundry IQ knowledge source for policies and handbooks</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>🔒 Student Data Governance</h2>
+                <span class="tag security">GDPR</span>
+                <span class="tag data">Privacy</span>
+                <p>Academic institutions face strict data protection obligations under GDPR and local Swiss law (nFADP).</p>
+                <ul>
+                    <li>Purview labels on all student records (PII classification)</li>
+                    <li>Agents inherit student-specific permission scopes only</li>
+                    <li>Audit logs for all AI interactions involving personal data</li>
+                    <li>Data residency options via Sovereign Cloud (Swiss datacentres)</li>
+                </ul>
+            </div>
+
+            <div class="card slate-accent">
+                <h2>📊 ROI for Higher Education</h2>
+                <ul>
+                    <li>Reduced admissions team workload via intelligent triage</li>
+                    <li>Faster response times to student enquiries (24/7 coverage)</li>
+                    <li>Improved data quality in SIS through automated entry</li>
+                    <li>Faculty time redirected from admin to teaching</li>
+                    <li>Better alumni engagement through personalised outreach agents</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════ PERSONAS -->
+    <section id="personas" class="content-section">
+        <h2 class="section-title">👥 Strategic Guidance by Role</h2>
+
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">All Roles</button>
+            <button class="filter-btn" data-filter="director">Director of IT</button>
+            <button class="filter-btn" data-filter="security">Cyber Security</button>
+            <button class="filter-btn" data-filter="architect">AI Architect</button>
+            <button class="filter-btn" data-filter="project">IT Project Managers</button>
+            <button class="filter-btn" data-filter="cloud">Cloud &amp; Infrastructure</button>
+            <button class="filter-btn" data-filter="data">Data Owners</button>
+        </div>
+
+        <div class="card-grid">
+            <div class="card persona-card" data-persona="director project">
+                <h2>📋 Director of IT &amp; IT Project Managers</h2>
+                <span class="tag strategy">Strategy</span>
+                <span class="tag">ROI</span>
+                <h3>Focus Areas</h3>
+                <ul>
+                    <li>Transition from AI experimentation to operationalization</li>
+                    <li>Implement the Agent Factory model enterprise-wide</li>
+                    <li>Define and track AI ROI metrics</li>
+                </ul>
+                <div class="action-item">
+                    <strong>Key Takeaway:</strong> Adopt the <strong>Agent Factory</strong> as your AI operating model. Assign each agent to a business owner with measurable KPIs.
+                </div>
+                <div class="action-item">
+                    <strong>ROI Metrics to Track:</strong> Deals created, time saved in CRM filling, document matching automation rate, cost per group/tenant.
+                </div>
+            </div>
+
+            <div class="card persona-card" data-persona="security data">
+                <h2>🔒 Cyber Security Director &amp; Data Owners</h2>
+                <span class="tag security">Security</span>
+                <span class="tag data">Data</span>
+                <h3>Focus Areas</h3>
+                <ul>
+                    <li>Zero Trust Architecture for all AI agents</li>
+                    <li>Purview sensitivity label coverage</li>
+                    <li>Entra Policies for behavioral AI risk detection</li>
+                </ul>
+                <div class="action-item">
+                    <strong>Key Takeaway:</strong> AI security <em>inherits</em> your existing M365 permission model. The investment is in labelling and policy — not building new security infrastructure.
+                </div>
+            </div>
+
+            <div class="card persona-card" data-persona="architect cloud">
+                <h2>🏗️ AI Architect &amp; Cloud / Infrastructure</h2>
+                <span class="tag arch">Architecture</span>
+                <span class="tag">Infrastructure</span>
+                <h3>Focus Areas</h3>
+                <ul>
+                    <li>Microsoft IQ Stack implementation and data mapping</li>
+                    <li>MCP connector design for enterprise systems</li>
+                    <li>Sovereign Cloud and hybrid deployment options</li>
+                </ul>
+                <div class="action-item">
+                    <strong>Key Takeaway:</strong> Use <strong>MCP</strong> as the universal adapter layer. Keep agents stateless. Invest in OneLake as the single source of truth for Fabric IQ.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════ ROADMAP -->
+    <section id="roadmap" class="content-section">
+        <h2 class="section-title">🗺 Implementation Roadmap</h2>
+        <p class="section-subtitle">A phased approach to becoming a Frontier Firm — applicable to any mid-to-large organization</p>
+
+        <div class="roadmap-phase">
+            <div class="phase-label">Phase 1 · Months 1–3</div>
+            <h3>🔍 Foundation &amp; Discovery</h3>
+            <div class="card-grid">
+                <div>
+                    <ul style="list-style:none;padding:0">
+                        <li style="padding:6px 0 6px 24px;position:relative"><span style="position:absolute;left:0;color:#107C10">✓</span> Audit existing data sources and map to IQ Stack layers</li>
+                        <li style="padding:6px 0 6px 24px;position:relative"><span style="position:absolute;left:0;color:#107C10">✓</span> Apply Purview sensitivity labels to all M365 data</li>
+                        <li style="padding:6px 0 6px 24px;position:relative"><span style="position:absolute;left:0;color:#107C10">✓</span> Identify top 5 AI use cases by business value</li>
+                        <li style="padding:6px 0 6px 24px;position:relative"><span style="position:absolute;left:0;color:#107C10">✓</span> Enable Copilot for M365 in a pilot group (50–100 users)</li>
+                        <li style="padding:6px 0 6px 24px;position:relative"><span style="position:absolute;left:0;color:#107C10">✓</span> Configure Agent 365 governance dashboard</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="roadmap-phase phase2">
+            <div class="phase-label">Phase 2 · Months 4–6</div>
+            <h3>🔨 Build &amp; Pilot</h3>
+            <ul style="list-style:none;padding:0">
+                <li style="padding:6px 0 6px 24px;position:relative"><span style="position:absolute;left:0;color:#F25022">→</span> Build first Foundry IQ knowledge base (SharePoint + Blob)</li>
+                <li style="padding:6px 0 6px 24px;position:relative"><span style="position:absolute;left:0;color:#F25022">→</span> Deploy first RAG agent in Copilot Studio (low-code)</li>
+                <li style="padding:6px 0 6px 24px;position:relative"><span style="position:absolute;left:0;color:#F25022">→</span> Build MCP connector for primary ERP (Dynamics / SAP / Oracle)</li>
+                <li style="padding:6px 0 6px 24px;position:relative"><span style="position:absolute;left:0;color:#F25022">→</span> Set up Entra Policies for agent behavioral controls</li>
+                <li style="padding:6px 0 6px 24px;position:relative"><span style="position:absolute;left:0;color:#F25022">→</span> Measure and report ROI on pilot cohort</li>
+            </ul>
+        </div>
+
+        <div class="roadmap-phase phase3">
+            <div class="phase-label">Phase 3 · Months 7–12</div>
+            <h3>🚀 Scale &amp; Operationalise</h3>
+            <ul style="list-style:none;padding:0">
+                <li style="padding:6px 0 6px 24px;position:relative"><span style="position:absolute;left:0;color:#7FBA00">✦</span> Roll out Agent Factory model org-wide</li>
+                <li style="padding:6px 0 6px 24px;position:relative"><span style="position:absolute;left:0;color:#7FBA00">✦</span> Activate Fabric IQ with OneLake as central data layer</li>
+                <li style="padding:6px 0 6px 24px;position:relative"><span style="position:absolute;left:0;color:#7FBA00">✦</span> Enable Work IQ for collaboration intelligence</li>
+                <li style="padding:6px 0 6px 24px;position:relative"><span style="position:absolute;left:0;color:#7FBA00">✦</span> Deploy Ownerless Agents for background process automation</li>
+                <li style="padding:6px 0 6px 24px;position:relative"><span style="position:absolute;left:0;color:#7FBA00">✦</span> Integrate Agentic DevOps into CI/CD pipelines</li>
+            </ul>
+        </div>
+
+        <div class="roadmap-phase phase4">
+            <div class="phase-label">Phase 4 · Year 2+</div>
+            <h3>🌟 Frontier Firm Status</h3>
+            <ul style="list-style:none;padding:0">
+                <li style="padding:6px 0 6px 24px;position:relative"><span style="position:absolute;left:0;color:#FF8C00">★</span> Multi-agent orchestration (Cowork patterns) in production</li>
+                <li style="padding:6px 0 6px 24px;position:relative"><span style="position:absolute;left:0;color:#FF8C00">★</span> Autonomous Blue / Red Team security operations</li>
+                <li style="padding:6px 0 6px 24px;position:relative"><span style="position:absolute;left:0;color:#FF8C00">★</span> Quantum-ready architecture evaluation (Majorana 1 workloads)</li>
+                <li style="padding:6px 0 6px 24px;position:relative"><span style="position:absolute;left:0;color:#FF8C00">★</span> AI-driven continuous improvement loop across all departments</li>
+                <li style="padding:6px 0 6px 24px;position:relative"><span style="position:absolute;left:0;color:#FF8C00">★</span> Full ROI transparency reported to C-suite quarterly</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════ SESSIONS -->
+    <section id="sessions" class="content-section">
+        <h2 class="section-title">📋 Session Index</h2>
+
+        <div class="card-grid">
+            <div class="card">
+                <span class="session-badge">LTG122-CH</span>
+                <h2>Copilot Control System</h2>
+                <h3>Secure, Manage, and Measure AI</h3>
+                <p>Comprehensive governance implementation for AI initiatives at enterprise scale.</p>
+                <h3>Key Topics</h3>
+                <ul>
+                    <li>Purview &amp; Copilot security inheritance</li>
+                    <li>AI Admin controls for agents and costs</li>
+                    <li>Group-based permissions in tenant</li>
+                    <li>Workday and Oracle MCP integration</li>
+                    <li>ROI Reports based on deals created</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <span class="session-badge">BRK202-CH</span>
+                <h2>Financial Services AI</h2>
+                <h3>Pioneering the Future with AI</h3>
+                <p>Real-world case studies from leading Swiss financial institutions.</p>
+                <h3>Featured Companies</h3>
+                <ul>
+                    <li>LGT — 5-year AI transformation journey</li>
+                    <li>Migros Bank — Document and OCR automation</li>
+                    <li>Vaudois Assurances — FINMA compliance and governance</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <span class="session-badge">BRK320-CH</span>
+                <h2>Becoming a Frontier Firm</h2>
+                <h3>Copilot + Agents at Scale</h3>
+                <p>Transform your organization into an AI-first enterprise with proper governance and ROI measurement.</p>
+                <h3>Key Concepts</h3>
+                <ul>
+                    <li>Microsoft IQ Stack (Work, Fabric, Foundry)</li>
+                    <li>Rules and workflows automation</li>
+                    <li>Agent 365 and Agent Factory</li>
+                    <li>Confidentiality labels in M365</li>
+                    <li>Graph API fine-grained permissions</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <span class="session-badge">BRK340-CH</span>
+                <h2>Driving Business Innovation</h2>
+                <h3>AI Apps and Agents</h3>
+                <p>Practical agentic AI applications across industries including energy, manufacturing, and professional services.</p>
+                <h3>Highlights</h3>
+                <ul>
+                    <li>Work IQ: Data, context, skills and tools</li>
+                    <li>Parallel agent execution (Cowork)</li>
+                    <li>Facilitator agent concept</li>
+                    <li>Restricted data per source controls</li>
+                    <li>Agentic DevOps from GitHub</li>
+                    <li>Microsoft Foundry Agent Service</li>
+                    <li>On-premise options for sensitive workloads</li>
+                    <li>11,000+ agents available in ecosystem</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <span class="session-badge">BRK380-CH</span>
+                <h2>End-to-End Security</h2>
+                <h3>In the Age of Agentic AI</h3>
+                <p>Comprehensive security strategies and architectures for AI deployments in regulated environments.</p>
+                <h3>Security Framework</h3>
+                <ul>
+                    <li>Secure by design, default, and operations</li>
+                    <li>Ambient Red Team vs Autonomous Blue Team</li>
+                    <li>Agentic defense strategies</li>
+                    <li>100 trillion signals/day processing capability</li>
+                    <li>OWASP Top 10 for ML and Agents</li>
+                    <li>Agent 365 controls (including non-Microsoft agents)</li>
+                    <li>Zero Trust architecture implementation</li>
+                    <li>Entra policies for risky agent detection</li>
+                    <li>Purview insights and blocking</li>
+                    <li>Shadow AI detection</li>
+                    <li>Sentinel playbook generator</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <div class="no-results" id="noResults">
+        <h3>No results found</h3>
+        <p>Try adjusting your search terms or browse the tabs above.</p>
     </div>
 
-    <script>
-        // Tab Navigation
-        const navTabs = document.querySelectorAll('.nav-tab');
-        const contentSections = document.querySelectorAll('.content-section');
+    <footer>
+        <p>Microsoft AI Tour Zürich — April 2026 &nbsp;|&nbsp; <a href="https://github.com/gaidajis/MSFT_AI_TOUR" target="_blank">View on GitHub</a></p>
+        <p style="margin-top:6px;font-size:0.85rem">For internal strategic planning purposes &nbsp;·&nbsp; Generated from conference findings</p>
+    </footer>
 
-        navTabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                // Remove active class from all tabs and sections
-                navTabs.forEach(t => t.classList.remove('active'));
-                contentSections.forEach(s => s.classList.remove('active'));
+</div>
 
-                // Add active class to clicked tab
-                tab.classList.add('active');
+<script>
+    mermaid.initialize({ startOnLoad: true, theme: 'default', securityLevel: 'loose' });
 
-                // Show corresponding section
-                const sectionId = tab.getAttribute('data-section');
-                document.getElementById(sectionId).classList.add('active');
+    // Tab Navigation
+    const navTabs = document.querySelectorAll('.nav-tab');
+    const contentSections = document.querySelectorAll('.content-section');
+    navTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            navTabs.forEach(t => t.classList.remove('active'));
+            contentSections.forEach(s => s.classList.remove('active'));
+            tab.classList.add('active');
+            document.getElementById(tab.getAttribute('data-section')).classList.add('active');
+        });
+    });
+
+    // Search
+    const searchInput = document.getElementById('searchInput');
+    const noResults = document.getElementById('noResults');
+    searchInput.addEventListener('input', e => {
+        const term = e.target.value.toLowerCase();
+        let found = false;
+        document.querySelectorAll('.card, .iq-layer, .highlight-box, .roadmap-phase').forEach(el => {
+            const show = !term || el.textContent.toLowerCase().includes(term);
+            el.style.display = show ? '' : 'none';
+            if (show) found = true;
+        });
+        noResults.style.display = found ? 'none' : 'block';
+    });
+
+    // Persona Filter
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const filter = btn.getAttribute('data-filter');
+            document.querySelectorAll('.persona-card').forEach(card => {
+                card.style.display = (filter === 'all' || card.getAttribute('data-persona').includes(filter)) ? '' : 'none';
             });
         });
-
-        // Search Functionality
-        const searchInput = document.getElementById('searchInput');
-        const noResults = document.getElementById('noResults');
-
-        searchInput.addEventListener('input', (e) => {
-            const searchTerm = e.target.value.toLowerCase();
-            let hasResults = false;
-
-            // Search through all cards and content
-            const allContent = document.querySelectorAll('.card, .iq-layer, .highlight-box, .action-item');
-            
-            allContent.forEach(element => {
-                const text = element.textContent.toLowerCase();
-                if (searchTerm === '' || text.includes(searchTerm)) {
-                    element.style.display = '';
-                    hasResults = true;
-                } else {
-                    element.style.display = 'none';
-                }
-            });
-
-            // Show/hide no results message
-            noResults.style.display = hasResults ? 'none' : 'block';
-        });
-
-        // Persona Filter
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const personaCards = document.querySelectorAll('.persona-card');
-
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                filterBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-
-                const filter = btn.getAttribute('data-filter');
-
-                personaCards.forEach(card => {
-                    if (filter === 'all' || card.getAttribute('data-persona').includes(filter)) {
-                        card.style.display = '';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-            });
-        });
-
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-    </script>
+    });
+</script>
 </body>
 </html>

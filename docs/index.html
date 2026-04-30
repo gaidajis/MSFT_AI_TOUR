@@ -328,7 +328,7 @@ flowchart TD
     G --> H["Copilot Studio"]
     G --> I["Microsoft Foundry"]
     G --> J["Ownerless Agents"]
-    F --> K["Agentic DevOps\n(GitHub → Agent)"]
+    F --> K["Agentic DevOps\n(GitHub to Agent)"]
     style E fill:#0078D4,color:#fff
     style F fill:#243A5E,color:#fff
     style G fill:#107C10,color:#fff
@@ -403,7 +403,7 @@ flowchart TD
             <h3>📡 IQ Stack Data Flow</h3>
             <div class="mermaid">
 sequenceDiagram
-    participant U as User / Agent
+    participant U as User or Agent
     participant W as Work IQ
     participant F as Fabric IQ
     participant FO as Foundry IQ
@@ -412,9 +412,9 @@ sequenceDiagram
     C->>W: Fetch collaboration context
     C->>F: Fetch business state data
     C->>FO: Retrieve institutional knowledge (RAG)
-    W-->>C: Teams / Outlook context
-    F-->>C: Live metrics + dashboards
-    FO-->>C: Policy docs + best practices
+    W-->>C: Teams and Outlook context
+    F-->>C: Live metrics and dashboards
+    FO-->>C: Policy docs and best practices
     C-->>U: Grounded, contextual response
             </div>
         </div>
@@ -489,9 +489,9 @@ sequenceDiagram
             <div class="mermaid">
 flowchart LR
     subgraph Builders
-        B1["Citizen Builder<br/>(Low-code)"]
-        B2["Pro Developer<br/>(Pro-code)"]
-        B3["Data Scientist<br/>(ML / Fine-tune)"]
+        B1["Citizen Builder\n(Low-code)"]
+        B2["Pro Developer\n(Pro-code)"]
+        B3["Data Scientist\n(ML and Fine-tune)"]
     end
     subgraph Platforms
         P1["Copilot Studio"]
@@ -499,7 +499,7 @@ flowchart LR
         P3["Azure AI Studio"]
     end
     subgraph Governance
-        G1["Agent 365<br/>Control Plane"]
+        G1["Agent 365\nControl Plane"]
         G2["Purview Labels"]
         G3["Entra Policies"]
     end
@@ -607,7 +607,7 @@ flowchart LR
             <div class="mermaid">
 flowchart TD
     A["Agent Request"] --> B{"Entra Identity Check"}
-    B -->|Risky / Unknown| C["Block + Alert"]
+    B -->|Risky or Unknown| C["Block + Alert"]
     B -->|Verified| D{"Purview Label Check"}
     D -->|Sensitivity exceeds Clearance| E["Block + Audit Log"]
     D -->|Permitted| F{"Least Privilege Scope"}
@@ -816,15 +816,15 @@ flowchart TD
 flowchart TD
     subgraph StudentJourney
         S1["Prospective Student"] --> S2["Application Agent"]
-        S2 --> S3["Admissions CRM<br/>(Dynamics 365)"]
+        S2 --> S3["Admissions CRM\n(Dynamics 365)"]
         S3 --> S4["Enrolled Student"]
-        S4 --> S5["Learning Agent<br/>(Course Support)"]
-        S4 --> S6["Career Agent<br/>(Alumni Network)"]
+        S4 --> S5["Learning Agent\n(Course Support)"]
+        S4 --> S6["Career Agent\n(Alumni Network)"]
     end
     subgraph DataPlatform
-        D1["Work IQ<br/>Teams Classes"]
-        D2["Fabric IQ<br/>Student SIS / Finance"]
-        D3["Foundry IQ<br/>Course Library / Policies"]
+        D1["Work IQ\nTeams Classes"]
+        D2["Fabric IQ\nStudent SIS and Finance"]
+        D3["Foundry IQ\nCourse Library and Policies"]
     end
     subgraph Governance
         G1["Agent 365"]

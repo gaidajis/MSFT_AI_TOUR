@@ -488,29 +488,22 @@ sequenceDiagram
             <h3>🏭 Agent Factory Operating Model</h3>
             <div class="mermaid">
 flowchart LR
-    subgraph Builders
-        B1["Citizen Builder\n(Low-code)"]
-        B2["Pro Developer\n(Pro-code)"]
-        B3["Data Scientist\n(ML and Fine-tune)"]
-    end
-    subgraph Platforms
-        P1["Copilot Studio"]
-        P2["Microsoft Foundry"]
-        P3["Azure AI Studio"]
-    end
-    subgraph Governance
-        G1["Agent 365\nControl Plane"]
-        G2["Purview Labels"]
-        G3["Entra Policies"]
-    end
-    B1 --> P1
-    B2 --> P2
-    B3 --> P3
-    P1 --> G1
+    B1["Citizen Builder<br/>(Low-code)"] --> P1["Copilot Studio"]
+    B2["Pro Developer<br/>(Pro-code)"] --> P2["Microsoft Foundry"]
+    B3["Data Scientist<br/>(ML + Fine-tune)"] --> P3["Azure AI Studio"]
+
+    P1 --> G1["Agent 365<br/>Control Plane"]
     P2 --> G1
     P3 --> G1
-    G1 --> G2
-    G1 --> G3
+    G1 --> G2["Purview Labels"]
+    G1 --> G3["Entra Policies"]
+
+    classDef builders fill:#EAF3FF,stroke:#0078D4,color:#1b1b1b;
+    classDef platforms fill:#FFF4E5,stroke:#FF8C00,color:#1b1b1b;
+    classDef governance fill:#E7F6EA,stroke:#107C10,color:#1b1b1b;
+    class B1,B2,B3 builders;
+    class P1,P2,P3 platforms;
+    class G1,G2,G3 governance;
     style G1 fill:#107C10,color:#fff
             </div>
         </div>
@@ -607,10 +600,10 @@ flowchart LR
             <div class="mermaid">
 flowchart TD
     A["Agent Request"] --> B{"Entra Identity Check"}
-    B -->|Risky or Unknown| C["Block + Alert"]
-    B -->|Verified| D{"Purview Label Check"}
-    D -->|Sensitivity exceeds Clearance| E["Block + Audit Log"]
-    D -->|Permitted| F{"Least Privilege Scope"}
+    B -->|"Risky / Unknown"| C["Block + Alert"]
+    B -->|"Verified"| D{"Purview Label Check"}
+    D -->|"Sensitivity > Clearance"| E["Block + Audit Log"]
+    D -->|"Permitted"| F{"Least Privilege Scope"}
     F --> G["Execute Action"]
     G --> H["Purview AI Dashboard Log"]
     H --> I["Sentinel SIEM"]
@@ -814,29 +807,27 @@ flowchart TD
             <h3>🏫 Higher Education AI Architecture (e.g. EHL / University)</h3>
             <div class="mermaid">
 flowchart TD
-    subgraph StudentJourney
-        S1["Prospective Student"] --> S2["Application Agent"]
-        S2 --> S3["Admissions CRM\n(Dynamics 365)"]
-        S3 --> S4["Enrolled Student"]
-        S4 --> S5["Learning Agent\n(Course Support)"]
-        S4 --> S6["Career Agent\n(Alumni Network)"]
-    end
-    subgraph DataPlatform
-        D1["Work IQ\nTeams Classes"]
-        D2["Fabric IQ\nStudent SIS and Finance"]
-        D3["Foundry IQ\nCourse Library and Policies"]
-    end
-    subgraph Governance
-        G1["Agent 365"]
-        G2["Purview (GDPR)"]
-    end
-    S5 --> D1
-    S5 --> D3
-    S6 --> D2
-    D1 --> G1
+    S1["Prospective Student"] --> S2["Application Agent"]
+    S2 --> S3["Admissions CRM<br/>(Dynamics 365)"]
+    S3 --> S4["Enrolled Student"]
+    S4 --> S5["Learning Agent<br/>(Course Support)"]
+    S4 --> S6["Career Agent<br/>(Alumni Network)"]
+
+    S5 --> D1["Work IQ<br/>Teams Classes"]
+    S5 --> D3["Foundry IQ<br/>Course Library + Policies"]
+    S6 --> D2["Fabric IQ<br/>Student SIS + Finance"]
+
+    D1 --> G1["Agent 365"]
     D2 --> G1
     D3 --> G1
-    G1 --> G2
+    G1 --> G2["Purview (GDPR)"]
+
+    classDef journey fill:#EAF3FF,stroke:#0078D4,color:#1b1b1b;
+    classDef data fill:#FFF4E5,stroke:#FF8C00,color:#1b1b1b;
+    classDef gov fill:#E7F6EA,stroke:#107C10,color:#1b1b1b;
+    class S1,S2,S3,S4,S5,S6 journey;
+    class D1,D2,D3 data;
+    class G1,G2 gov;
     style G2 fill:#D13438,color:#fff
     style G1 fill:#107C10,color:#fff
             </div>

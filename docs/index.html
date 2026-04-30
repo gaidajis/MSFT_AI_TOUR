@@ -1096,12 +1096,28 @@ flowchart TD
 <script>
     mermaid.initialize({ startOnLoad: false, theme: 'default', securityLevel: 'loose' });
 
-    // Render all mermaid diagrams on initial load
+    function renderMermaidInSection(section) {
+        if (!section) return;
+        const diagrams = Array.from(section.querySelectorAll('.mermaid'));
+        if (diagrams.length === 0) return;
+
+        // Force Mermaid to (re)process diagrams when a tab becomes visible.
+        diagrams.forEach(node => node.removeAttribute('data-processed'));
+
+        if (typeof mermaid.run === 'function') {
+            mermaid.run({ nodes: diagrams });
+        } else {
+            mermaid.init(undefined, diagrams);
+        }
+    }
+
+    // Render only the visible section on initial load.
     document.addEventListener('DOMContentLoaded', function() {
-        mermaid.run();
+        const activeSection = document.querySelector('.content-section.active');
+        renderMermaidInSection(activeSection);
     });
 
-    // Tab Navigation — re-render mermaid diagrams when switching to a previously hidden tab
+    // Tab Navigation — render Mermaid after activating the selected tab.
     const navTabs = document.querySelectorAll('.nav-tab');
     const contentSections = document.querySelectorAll('.content-section');
     navTabs.forEach(tab => {
@@ -1112,17 +1128,7 @@ flowchart TD
             const sectionId = tab.getAttribute('data-section');
             const section = document.getElementById(sectionId);
             section.classList.add('active');
-
-            // Mermaid only processes visible elements on startOnLoad.
-            // Re-render any diagrams that were hidden and not yet processed.
-            const unprocessed = Array.from(section.querySelectorAll('.mermaid:not([data-processed="true"])'));
-            if (unprocessed.length > 0) {
-                if (typeof mermaid.run === 'function') {
-                    mermaid.run({ nodes: unprocessed });
-                } else {
-                    mermaid.init(undefined, unprocessed);
-                }
-            }
+            renderMermaidInSection(section);
         });
     });
 

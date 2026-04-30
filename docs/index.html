@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Microsoft AI Tour Zürich 2026 — Executive Hub</title>
-    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
     <style>
         :root {
             --ms-blue: #0078D4;
@@ -1127,7 +1127,7 @@ flowchart TD
         mermaid.run();
     });
 
-    // Tab Navigation
+    // Tab Navigation — re-render mermaid diagrams when switching to a previously hidden tab
     const navTabs = document.querySelectorAll('.nav-tab');
     const contentSections = document.querySelectorAll('.content-section');
     navTabs.forEach(tab => {
@@ -1135,16 +1135,20 @@ flowchart TD
             navTabs.forEach(t => t.classList.remove('active'));
             contentSections.forEach(s => s.classList.remove('active'));
             tab.classList.add('active');
-            const targetSection = document.getElementById(tab.getAttribute('data-section'));
-            targetSection.classList.add('active');
-            
-            // Re-render mermaid diagrams in the newly activated section
-            setTimeout(() => {
-                const mermaidElements = targetSection.querySelectorAll('.mermaid:not([data-processed="true"])');
-                if (mermaidElements.length > 0) {
-                    mermaid.run({ nodes: mermaidElements });
+            const sectionId = tab.getAttribute('data-section');
+            const section = document.getElementById(sectionId);
+            section.classList.add('active');
+
+            // Mermaid only processes visible elements on startOnLoad.
+            // Re-render any diagrams that were hidden and not yet processed.
+            const unprocessed = Array.from(section.querySelectorAll('.mermaid:not([data-processed="true"])'));
+            if (unprocessed.length > 0) {
+                if (typeof mermaid.run === 'function') {
+                    mermaid.run({ nodes: unprocessed });
+                } else {
+                    mermaid.init(undefined, unprocessed);
                 }
-            }, 50);
+            }
         });
     });
 

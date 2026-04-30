@@ -488,11 +488,25 @@ sequenceDiagram
             <h3>🏭 Agent Factory Operating Model</h3>
             <div class="mermaid">
 flowchart LR
-    B1["Citizen Builder<br/>(Low-code)"] --> P1["Copilot Studio"]
-    B2["Pro Developer<br/>(Pro-code)"] --> P2["Microsoft Foundry"]
-    B3["Data Scientist<br/>(ML + Fine-tune)"] --> P3["Azure AI Studio"]
-
-    P1 --> G1["Agent 365<br/>Control Plane"]
+    subgraph builders["Builders"]
+        B1["Citizen Builder\n(Low-code)"]
+        B2["Pro Developer\n(Pro-code)"]
+        B3["Data Scientist\n(ML and Fine-tune)"]
+    end
+    subgraph platforms["Platforms"]
+        P1["Copilot Studio"]
+        P2["Microsoft Foundry"]
+        P3["Azure AI Studio"]
+    end
+    subgraph governance["Governance"]
+        G1["Agent 365\nControl Plane"]
+        G2["Purview Labels"]
+        G3["Entra Policies"]
+    end
+    B1 --> P1
+    B2 --> P2
+    B3 --> P3
+    P1 --> G1
     P2 --> G1
     P3 --> G1
     G1 --> G2["Purview Labels"]
@@ -807,17 +821,26 @@ flowchart TD
             <h3>🏫 Higher Education AI Architecture (e.g. EHL / University)</h3>
             <div class="mermaid">
 flowchart TD
-    S1["Prospective Student"] --> S2["Application Agent"]
-    S2 --> S3["Admissions CRM<br/>(Dynamics 365)"]
-    S3 --> S4["Enrolled Student"]
-    S4 --> S5["Learning Agent<br/>(Course Support)"]
-    S4 --> S6["Career Agent<br/>(Alumni Network)"]
-
-    S5 --> D1["Work IQ<br/>Teams Classes"]
-    S5 --> D3["Foundry IQ<br/>Course Library + Policies"]
-    S6 --> D2["Fabric IQ<br/>Student SIS + Finance"]
-
-    D1 --> G1["Agent 365"]
+    subgraph student_journey["Student Journey"]
+        S1["Prospective Student"] --> S2["Application Agent"]
+        S2 --> S3["Admissions CRM\n(Dynamics 365)"]
+        S3 --> S4["Enrolled Student"]
+        S4 --> S5["Learning Agent\n(Course Support)"]
+        S4 --> S6["Career Agent\n(Alumni Network)"]
+    end
+    subgraph data_platform["Data Platform"]
+        D1["Work IQ\nTeams Classes"]
+        D2["Fabric IQ\nStudent SIS and Finance"]
+        D3["Foundry IQ\nCourse Library and Policies"]
+    end
+    subgraph governance["Governance"]
+        G1["Agent 365"]
+        G2["Purview (GDPR)"]
+    end
+    S5 --> D1
+    S5 --> D3
+    S6 --> D2
+    D1 --> G1
     D2 --> G1
     D3 --> G1
     G1 --> G2["Purview (GDPR)"]

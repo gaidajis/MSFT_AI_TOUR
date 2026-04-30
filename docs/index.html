@@ -607,10 +607,10 @@ flowchart LR
             <div class="mermaid">
 flowchart TD
     A["Agent Request"] --> B{"Entra Identity Check"}
-    B -->|"Risky / Unknown"| C["Block + Alert"]
-    B -->|"Verified"| D{"Purview Label Check"}
-    D -->|"Sensitivity exceeds Clearance"| E["Block + Audit Log"]
-    D -->|"Permitted"| F{"Least Privilege Scope"}
+    B -->|Risky / Unknown| C["Block + Alert"]
+    B -->|Verified| D{"Purview Label Check"}
+    D -->|Sensitivity exceeds Clearance| E["Block + Audit Log"]
+    D -->|Permitted| F{"Least Privilege Scope"}
     F --> G["Execute Action"]
     G --> H["Purview AI Dashboard Log"]
     H --> I["Sentinel SIEM"]

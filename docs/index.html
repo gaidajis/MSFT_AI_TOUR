@@ -1096,39 +1096,33 @@ flowchart TD
 <script>
     mermaid.initialize({ startOnLoad: false, theme: 'default', securityLevel: 'loose' });
 
-    function renderMermaidInSection(section) {
-        if (!section) return;
-        const diagrams = Array.from(section.querySelectorAll('.mermaid'));
-        if (diagrams.length === 0) return;
-
-        // Force Mermaid to (re)process diagrams when a tab becomes visible.
-        diagrams.forEach(node => node.removeAttribute('data-processed'));
-
-        if (typeof mermaid.run === 'function') {
-            mermaid.run({ nodes: diagrams });
-        } else {
-            mermaid.init(undefined, diagrams);
-        }
-    }
-
-    // Render only the visible section on initial load.
+    // Render ONLY the mermaid diagrams in the initially visible tab
     document.addEventListener('DOMContentLoaded', function() {
-        const activeSection = document.querySelector('.content-section.active');
-        renderMermaidInSection(activeSection);
+        const activeMermaids = document.querySelectorAll('.content-section.active .mermaid');
+        if (activeMermaids.length > 0) {
+            mermaid.run({ nodes: Array.from(activeMermaids) }).catch(console.error);
+        }
     });
 
-    // Tab Navigation — render Mermaid after activating the selected tab.
+    // Tab Navigation — Render mermaid diagrams only when their tab becomes visible
     const navTabs = document.querySelectorAll('.nav-tab');
     const contentSections = document.querySelectorAll('.content-section');
+    
     navTabs.forEach(tab => {
         tab.addEventListener('click', () => {
             navTabs.forEach(t => t.classList.remove('active'));
             contentSections.forEach(s => s.classList.remove('active'));
+            
             tab.classList.add('active');
             const sectionId = tab.getAttribute('data-section');
             const section = document.getElementById(sectionId);
             section.classList.add('active');
-            renderMermaidInSection(section);
+
+            // Now that the section is display:block, it's safe to calculate dimensions and render
+            const unprocessed = Array.from(section.querySelectorAll('.mermaid:not([data-processed="true"])'));
+            if (unprocessed.length > 0) {
+                mermaid.run({ nodes: unprocessed }).catch(console.error);
+            }
         });
     });
 
